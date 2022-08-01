@@ -1,0 +1,7 @@
+:orphan:
+
+Help
+====
+
+.. image:: ../images/open_map.png
+  :alt: Alternative text

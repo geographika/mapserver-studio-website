@@ -1,0 +1,7 @@
+:orphan:
+
+Beeb
+====
+
+.. image:: ../images/beeb.png
+  :alt: Alternative text

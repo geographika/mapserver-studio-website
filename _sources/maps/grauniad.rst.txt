@@ -1,0 +1,7 @@
+:orphan:
+
+Grauniad
+========
+
+.. image:: ../images/grauniad.png
+  :alt: Alternative text
