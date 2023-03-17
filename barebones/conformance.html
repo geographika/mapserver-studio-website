@@ -1,12 +1,10 @@
 {% include "header.html" %}
 
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb bg-light">
-    <li class="breadcrumb-item"><a href="{{ template.api_root }}?f=html">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Conformance</li>
-    <li class="ml-auto json-link"><a target="_blank" href="{{ template.api_root }}/conformance?f=json">JSON</a></li>
-  </ol>
-</nav>
+<ul class="breadcrumb">
+    <li><a href="{{ template.api_root }}?f=html">Home</a></li>
+    <li>Conformance</li>
+    <li class="json-link"><a target="_blank" href="{{ template.api_root }}/conformance?f=json">JSON</a></li>
+</ul>
 
 <h1>{{ template.title }} - Conformance</h1>
 

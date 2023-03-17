@@ -3,9 +3,8 @@
 <ul class="breadcrumb">
     <li><a href="{{ template.api_root }}?f=html">Home</a></li>
     <li><a href="{{ template.api_root }}/collections?f=html">Collections</a></li>
-    <li><a href="{{ template.api_root }}/collections/{{ response.collection.id }}?f=html">{{ response.collection.title }}</a></li>
     <li>items</li>
-    <li class="json-link"><a target="_blank" href="{{ json_link.href }}">JSON</a></li>
+    <li class="json-link"><a target="_blank" href="{{ template.api_root }}/collections?f=json">JSON</a></li>
 </ul>
 
 <h1>{{ template.title }} - Collections</h1>
@@ -16,7 +15,7 @@
             <tr>
                 <th>#</th>
                 <th>Title</th>
-                <th>Type</th>
+                <th>Name</th>
                 <th>Description</th>
             </tr>
         </thead>
@@ -25,7 +24,7 @@
             <tr>
                 <td>{{ loop.index1 }}</td>
                 <td><a href="{{ template.api_root }}/collections/{{ collection.id }}?f=html">{{ collection.title }}</a></td>
-                <td>{{ collection.itemType }}</td>
+                <td>{{ collection.id }}</td>
                 <td>{{ collection.description }}</td>
             </tr>
             {% endfor %}

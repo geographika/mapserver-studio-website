@@ -38,3 +38,25 @@ ul.breadcrumb {
     .json-link:before {
         content: none !important;
     }
+
+h1 {
+    text-align: center;
+}
+
+.footer {
+
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .footer img {
+        max-width: 100px;
+    }
+
+    .footer p {
+        margin: 0; /* Remove any default margin */
+    }

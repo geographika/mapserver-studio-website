@@ -33,15 +33,12 @@
         <a class="button button-primary" title="previous page" href="{{ prev_link.href }}">prev</a>
         {% endif %}
 
-        <div class="six columns">
-
-            <select class="u-full-width" id="limit">
+        <div class="two columns">
+            <select  id="limit">
                 <!-- TODO: dynamically populate the values based on oga_max_limit -->
                 <option value="10">page size</option>
                 <option>10</option>
                 <option>100</option>
-                <option>1000</option>
-                <option>10000</option>
             </select>
         </div>
         {% if show_next_link == true %}
@@ -77,10 +74,8 @@ function changePageSize() {
 }
 
 $(function() {
-
-
-    var geojson = {{ response }};
-    addCollectionItemsMapping(geojson);
+    const geojson = {{ response }};
+    addGeoJsonToMap(geojson);
   //
   // paging
   //

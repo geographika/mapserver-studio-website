@@ -1,6 +1,7 @@
 Mapfile Browser
 ===============
 
+This page documents how to open maps and templates. 
 
 ..
     Filter
