@@ -1,0 +1,111 @@
+{% include "header.html" %}
+
+{% set show_prev_link = false %}
+{% set show_next_link = false %}
+{% for link in response.links %}
+  {% if link.rel == "alternate" %}{% set json_link = link %}{% endif %}
+  {% if link.rel == "prev" %}{% set prev_link = link %}{% set show_prev_link = true %}{% endif %}
+  {% if link.rel == "next" %}{% set next_link = link %}{% set show_next_link = true %}{% endif %}
+{% endfor %}
+
+<ul class="breadcrumb">
+    <li><a href="{{ template.api_root }}?f=html">Home</a></li>
+    <li><a href="{{ template.api_root }}/collections?f=html">Collections</a></li>
+    <li><a href="{{ template.api_root }}/collections/{{ response.collection.id }}?f=html">{{ response.collection.title }}</a></li>
+    <li>items</li>
+    <li class="json-link"><a target="_blank" href="{{ json_link.href }}">JSON</a></li>
+</ul>
+
+<h1>{{ template.title }} - Collection Items: {{ response.collection.title }}</h1>
+
+<div id="map" class="map" style="width:100%; height:400px;"></div>
+
+<p>
+    <b>Number of matching items:</b> {{ response.numberMatched }}<br />
+    <b>Number of returned items:</b> {{ response.numberReturned }}<br />
+    <b>Page:</b> <span id="current_page"></span> of <span id="total_pages"></span><br />
+</p>
+
+<form>
+    <div class="row">
+
+        {% if show_prev_link == true %}
+        <a class="button button-primary" title="previous page" href="{{ prev_link.href }}">prev</a>
+        {% endif %}
+
+        <div class="six columns">
+
+            <select class="u-full-width" id="limit">
+                <!-- TODO: dynamically populate the values based on oga_max_limit -->
+                <option value="10">page size</option>
+                <option>10</option>
+                <option>100</option>
+                <option>1000</option>
+                <option>10000</option>
+            </select>
+        </div>
+        {% if show_next_link == true %}
+        <a class="button button-primary" title="next page" href="{{ next_link.href }}">next</a>
+        {% endif %}
+    </div>
+</form>
+
+<table class="u-full-width">
+    <thead>
+    <th>ID</th>
+    {% for key, value in response.features.0.properties %}
+    <th>{{ key }}</th>
+    {% endfor %}
+    </thead>
+    <tbody>
+        {% for feature in response.features %}
+        <tr>
+            <td><a target="_blank" href="{{ template.api_root }}/collections/{{ response.collection.id }}/items/{{ feature.id }}?f=html">{{ feature.id }}</a></td>
+            {% for key, value in feature.properties %}
+            <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+function changePageSize() {
+  var url = "{{ template.api_root }}/collections/{{ response.collection.id }}/items?";
+  url += "limit=" + $("#limit").val();
+  window.location.href = url;
+}
+
+$(function() {
+
+
+    var geojson = {{ response }};
+    addCollectionItemsMapping(geojson);
+  //
+  // paging
+  //
+  var offset = 0; // defaults
+  var limit = 10;
+
+  {% if existsIn(template.params, "offset") %}
+  offset = {{ template.params.offset }};
+  {% endif %}
+  {% if existsIn(template.params, "limit") %}
+  limit = {{ template.params.limit }};
+  {% endif %}
+
+  var current_page = (offset + limit)/limit;
+  $("#current_page").html(current_page);
+  var total_pages = Math.ceil({{ response.numberMatched }}/limit);
+  $("#total_pages").html(total_pages);
+
+  //
+  // event handling
+  //
+  $("#limit").on("change", function() {
+    changePageSize();
+  });
+});
+</script>
+
+{% include "footer.html" %}
