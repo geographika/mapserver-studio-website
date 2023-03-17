@@ -1,0 +1,25 @@
+Hi all,
+
+Thanks for signing up for news about MapServer Studio!
+I'm pleased to announce that there is finally beta release online available for testing. 
+
+As appreciation for your support there is a link to a 3-month free trial for the "Professional"
+
+A free version of MapServer Studio will be available for testing MapServer Mapfiles, but images will be watermarked. 
+
+Hosting and data transfer costs,
+
+The aims of this project are as follows:
+
+- provide an easy way for new and experienced users to try and test MapServer
+
+
+No vendor lockin - any maps created in MapServer Studio can be saved as a Mapfile and served using a locally installed
+version of MapServer. 
+
+
+Natural Earth dataset.
+OGC Features API.
+
+Please get in touch if you have any questions, and thanks for your support.
+

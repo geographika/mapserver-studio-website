@@ -1,0 +1,9 @@
+About
+=====
+
+MapServer Studio is created by Seth Girvin
+
+https://geographika.net/
+
+
+

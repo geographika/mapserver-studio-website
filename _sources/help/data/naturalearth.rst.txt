@@ -1,0 +1,16 @@
+Natural Earth Datasets
+======================
+
+https://www.naturalearthdata.com/downloads/
+
+1:10m - most detailed
+
+
+Dump out all dataset details from OGR JSON
+metadata?
+
+
+        CONNECTION "/vsis3/mapserverstudio/naturalearth/fgb"
+        DATA "ne_10m_lakes"
+
+.. include:: naturalearth-table.rst

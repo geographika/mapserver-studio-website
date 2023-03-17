@@ -1,0 +1,10 @@
+Quick Start
+-----------
+
+The easiest way to get familiar with MapServer Studio is to open a template map ans start playing around with the
+Mapfile syntax. The official MapServer documentation for `<https://mapserver.org/mapfile/> Mapfiles`_ is an excellent resource. 
+
+The <https://mapserver.org/introduction.html#introduction-to-the-mapfile>Introduction to the Mapfile`_ provides a good introduction.
+
+
+

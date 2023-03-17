@@ -1,4 +1,36 @@
-:orphan:
-
 Pricing
 =======
+
+.. note::
+
+    If you have any problems with payments or with paid subscriptions please contact support@mapserverstudio.net
+
+MapServer Studio is currently in its early days of development.
+Purchasing a subscription brings the following benefits:
+
++ Support the ongoing and future development of MapServer Studio
++ Support continuing maintenance and feature development of the MapServer project
+  (see `contributions to MapServer <https://github.com/MapServer/MapServer/commits?author=geographika>`_).
+
+.. raw:: html
+
+    <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+    <stripe-pricing-table pricing-table-id="prctbl_1MeeoyBEn4nsDS4t9yAahpMv"
+    publishable-key="pk_live_51LDb1NBEn4nsDS4tUW6QquL8cp1v4hr4UUxHR3oq8WAYaUYRmH1EV4TSIdwPkbprfzEQNvDJWSWI7jqriWPYIndp00JtTzmmmM">
+    </stripe-pricing-table>
+
+FAQ
+---
+
+:Q: Is there a free plan?
+:A: MapServer Studio currently allows users without a paid subscription to create and generate maps. All map images
+    contain a "MapServer Studio" watermark image. 
+
+:Q: Is Single-Sign On (SSO) available?
+:A: SSO is not currently supported. If there is a demand
+
+:Q: Will more pricing tiers be available?
+:A: The road map for development includes plans for advanced features such as allowing data sources from private S3 stores,
+    and one-click publishing and hosting of maps.
+
+

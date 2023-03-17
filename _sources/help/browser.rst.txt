@@ -1,0 +1,12 @@
+Mapfile Browser
+===============
+
+
+..
+    Filter
+    Hide/Show Templates
+    Sorting
+
+
+.. image:: ../images/help/open_map.png
+  :alt: Alternative text

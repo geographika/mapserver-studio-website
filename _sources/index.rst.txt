@@ -17,11 +17,15 @@ MapServer Studio
 .. raw:: html
    :file: welcome.html
 
-..
 .. toctree::
    :maxdepth: 2
    :hidden:
    :caption: Contents:
+
+   self
+   help/help.rst
+   pricing.rst
+   about.rst
 
 ..
     Indices and tables

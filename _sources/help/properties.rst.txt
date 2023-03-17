@@ -1,0 +1,8 @@
+Map Properties
+==============
+
+
+..
+    When logged in as a standard user:
+
+    + cannot Save/Update a template map

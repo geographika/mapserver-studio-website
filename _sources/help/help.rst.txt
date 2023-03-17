@@ -1,0 +1,22 @@
+:orphan:
+
+Help
+====
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Contents:
+
+   self
+   ../pricing.rst
+   ../about.rst
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   browser.rst
+   properties.rst
+   user.rst
+
