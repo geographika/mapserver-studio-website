@@ -1,9 +1,15 @@
 About
 =====
 
-MapServer Studio is created by Seth Girvin
-
-https://geographika.net/
-
+MapServer Studio is created by `Geographika Ltd. <https://geographika.net/>`_
+a UK based geospatial consultancy. 
 
 
+Privacy
+-------
+
+Only the minimal amount of data is stored by MapServer Studio - your user login email, and any Mapfiles
+associated with your account. No passwords or payment details are stored on MapServer Studio servers.
+
++ Password management is handled by https://auth0.com/
++ Payments and credit card details are handled by https://stripe.com

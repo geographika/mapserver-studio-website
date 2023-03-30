@@ -16,7 +16,9 @@ Help
    :maxdepth: 2
    :caption: Contents:
 
+   quickstart.rst
+..
    browser.rst
+   formatting.rst
    properties.rst
    user.rst
-

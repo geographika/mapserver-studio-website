@@ -96,3 +96,6 @@ debug.html
 
 
 Example site: https://demo.mapserver.org/cgi-bin/mapserv/localdemo/ogcapi/collections?f=html
+
+
+Staging URL: https://api-staging.mapserverstudio.net/mapserver/naturalearth/ogcapi

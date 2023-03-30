@@ -1,0 +1,18 @@
+Formatting Mapfiles
+===================
+
+MapServer Studio allows you to automatically format your Mapfiles. Click the "Format" button on the toolbar to auto-format your Mapfile. By default this also
+validates that your Mapfile has no syntax errors. 
+
+.. image:: ../images/help/toolbar-left.png
+  :alt: The MapServer Studio toolbar with the Format button
+
+Formatting options can be configured using the "Settings" dialog, available by clicking the "Settings" button. 
+
+.. image:: ../images/help/settings.png
+  :alt: The MapServer Studio Settings dialog with Formatting options
+
+
+
+Formatting is powered using `mappyfile <https://mappyfile.readthedocs.io>`_ - 
+please see the `Pretty Printing <https://mappyfile.readthedocs.io/en/latest/pretty_printing.html>`_ documentation for further details.
