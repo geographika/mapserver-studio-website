@@ -1,0 +1,63 @@
+Leader Lines
+============
+
+In cartography, leader lines are lines used to connect labels on a map to their corresponding feature. 
+They are commonly used when labels cannot be placed directly on the feature without overlapping other labels.
+
+Leader lines are an important tool in map design as they help to improve the readability and clarity of 
+a map by guiding the viewer's eye to the labeled feature or point of interest.
+
+
+
+"""
+Add lots of screenshots
+Link to template
+
+In MapServer leader lines were part of the `6.2 release in 2021 <https://mapserver.org/development/announce/6-2.html#label-leader-offsetting>`_.
+
+label lines to features where space is an issue for the label (callouts)
+
+The MapServer `LEADER <https://mapserver.org/mapfile/leader.html>`_ documentation. 
+
+The `Request for Comment (RFC) <https://mapserver.org/development/rfc/ms-rfc-81.html#rfc81>`_
+
+
+``LABEL`` leaders are defined at the ``CLASS`` level in their own ``LEADER`` block:
+
+The `LEADER`` block has 3 properties:
+
++ `GRIDSTEP <https://mapserver.org/mapfile/leader.html#mapfile-leader-gridstep>`_
++ `MAXDISTANCE <https://mapserver.org/mapfile/leader.html#mapfile-leader-maxdistance>`_
++ `STYLE <https://mapserver.org/mapfile/style.html#style>`_
+
+Multiple styles can be applied to the leader line
+
+
+
+Add diagram of CLASS - LEADER - STYLE
+
+Collision detection - cannot collide with other leader lines and labels.
+
+"Label leader lines interfere with the label text" - https://github.com/MapServer/MapServer/issues/4243
+
+
+One workaround to this is to put an outlinecolor on your label to minimize (hide) interference with the leader line.
+
+
+https://github.com/MapServer/MapServer/issues/4241 -  Support for symbols at start or end of leader lines #4241
+My goal was to put a symbol at the start or end of the leader, but as Thomas has indicated it is not supported yet.
+
+   LEADER
+     MAXDISTANCE 30
+     GRIDSTEP 5
+     STYLE
+       GEOMTRANSFORM 'end' # also tried 'start'
+       SYMBOL 'circle-filled'
+       SIZE 6.5  # make it big to besure its not hidden
+       COLOR "#000000"
+     END
+     STYLE
+       COLOR "#000000"
+       WIDTH 0.5
+     END
+   END

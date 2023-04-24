@@ -1,0 +1,140 @@
+Fonts
+=====
+
+MapServer Studio allows you to choose from thousands of different fonts to use in your maps.
+
+To use a font first set the `FONTSET <https://mapserver.org/mapfile/fontset.html#fontset>`_ in your Mapfile.
+A ``FONTSET`` is a text file that contains a font name and its associated TrueType file. TrueType fonts can be rendered at any size 
+without losing quality. 
+
+MapServer Studio currently supports two ``FONTSET`` values: **google** and **microsoft**. These values can be
+added to a Mapfile to allow fonts from either of these collections to be used:
+
+.. code-block:: mapfile
+
+    MAP
+        NAME "MyFontsMap"
+        FONTSET "google"
+        ...
+
+Selecting a Font
+----------------
+
+Once a ``FONTSET`` has been selected any of the fonts in the collection can be used when rendering a map.
+Fonts are typically used in a `LABEL <https://mapserver.org/mapfile/label.html>`_ object. 
+
+.. code-block:: mapfile
+
+    LABEL
+      COLOR  150 150 150
+      FONT "arial"
+      TYPE truetype
+      SIZE 12
+    END
+
+.. note:: 
+
+    Aliases are **not** case-sensitive so "Arial", "arial", and "ARIAL" can all be used. MapServer Studio also
+    allows for aliases with spaces or hyphens e.g. "Times New Roman Italic" or "Times-New-Roman-Italic"
+    are equivalent.
+
+Below is an example of a label using the `Monsieur La Doulaise <https://fonts.google.com/specimen/Monsieur+La+Doulaise>`_ font from the
+Google fontset:
+
+.. code-block:: mapfile
+
+    MAP
+        NAME "Caribbean"
+        FONTSET "google"
+    ..
+        LABEL
+            FONT "Monsieur La Doulaise" # can also use "Monsieur-La-Doulaise"
+            TYPE TRUETYPE
+            SIZE 28
+            POSITION AUTO
+            PARTIALS FALSE
+            BUFFER 5
+        END
+
+.. image:: ../images/help/font1.png
+  :alt: Screenshot showing a map using the Monsieur La Doulaise font
+
+With a change of font and just a couple of changes to the labels and the map colour you can create a very
+different looking map:
+
+  .. code-block:: mapfile
+
+    MAP
+        NAME "Scifi"
+        FONTSET "google"
+    ..
+            LABEL
+            FONT "Bruno Ace" # can also use "Bruno-Ace"
+            TYPE TRUETYPE
+            SIZE 14
+            COLOR 255 255 255
+            POSITION AUTO
+            PARTIALS FALSE
+            BUFFER 5
+        END
+
+.. image:: ../images/help/font2.png
+  :alt: Screenshot showing a map using the Bruno Ace font
+
+Using Fontsets Locally
+----------------------
+
+If you have created a Mapfile using MapServer Studio, and want to host the Mapfile elsewhere you will need to
+obtain copies of the TTF files used in your map and then create a fontset file containing any of the fonts used in your map.
+For example create a ``fonts.txt`` with the following entries:
+
+.. code-block:: bat
+
+    Bruno-Ace                                          BrunoAce-Regular.ttf
+    Monsieur-La-Doulaise                               MonsieurLaDoulaise-Regular.ttf
+
+You will then need to reference this file in your Mapfile:
+
+.. code-block:: mapfile
+
+    FONTSET "../path/fonts.txt"
+
+Aliases cannot contain spaces (see `this issue <https://github.com/MapServer/MapServer/issues/1908>`_), so a workaround
+is to replace these with hyphens. The paths to the TTF files are relative to the ``fonts.txt`` file. 
+
+Google Fonts
+------------
+
+`Google Fonts <https://fonts.google.com/>`_ is a collection of open-source fonts that can be used by anyone for free. 
+From the `FAQ <https://developers.google.com/fonts/faq>`_:
+
+    *all Google Fonts are open source and are without cost...you can use them commercially, and 
+    even include them within a product that is sold commercially.*
+
+There are over 3,350 fonts in the collection. To find a font browse or search the fonts at https://fonts.google.com/. 
+Then simply use the name of the font as the
+``FONT`` value in your Mapfile. There are 
+
+Microsoft Fonts
+---------------
+
+This fontset contains fonts from `Microsoft True Type Core Fonts for the Web <https://packages.debian.org/sid/ttf-mscorefonts-installer>`_.
+These can be installed on a Linux machine using the following command:
+
+.. code-block:: bash
+
+    apt install ttf-mscorefonts-installer
+
+The `End User License Agreement <https://corefonts.sourceforge.net/eula.htm>`_ does not restrict using the fonts when generating a map.
+
+Below is the full list of available fonts in this fontset:
+
+.. include:: microsoft-fonts.txt
+   :literal:
+
+
+..
+    apt install fonts-liberation
+    /usr/share/doc/ttf-mscorefonts-installer/
+    https://github.com/MapServer/MapServer/issues/3893 - fix was to replace spaces with hyphens to allow mapping to a valid hashtable entry in OGR
+    Spaces in paths allowed? https://github.com/MapServer/MapServer/issues/708

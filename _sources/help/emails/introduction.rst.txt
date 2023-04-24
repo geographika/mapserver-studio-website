@@ -1,17 +1,34 @@
 Hi all,
 
-Thanks for signing up for news about MapServer Studio!
-I'm pleased to announce that there is finally beta release online available for testing. 
+Thank you for signing up to receive news about MapServer Studio!
 
-As appreciation for your support there is a link to a 3-month free trial for the "Professional"
+I'm pleased to announce that the beta release is now available for testing at https://app.mapserverstudio.net. 
+MapServer Studio provides a user-friendly platform for both new and experienced users to edit and view MapServer Mapfiles.
 
-A free version of MapServer Studio will be available for testing MapServer Mapfiles, but images will be watermarked. 
+To get started with MapServer Studio, simply sign up for a free account, which will allow you to save your maps. 
+If you're looking for even more advanced features, consider the paid account, which removes image watermarks and will offer additional benefits
+in future releases. Please have a look at our minimal quickstart guide at https://mapserverstudio.net/help/quickstart.html.
+
+Natural Earth datasets can be used within MapServer Studio, and the collection can be browsed at https://api.mapserverstudio.net/mapserver/naturalearth/ogcapi/collections?f=html.
+In addition, you can easily load datasets from any publicly available S3 bucket.
+
+Please get in touch if you have any questions or find any bugs, and thanks for your support.
+
+Seth
+
+
+
+
+
+
+
+images will be watermarked. 
 
 Hosting and data transfer costs,
 
 The aims of this project are as follows:
 
-- provide an easy way for new and experienced users to try and test MapServer
+- 
 
 
 No vendor lockin - any maps created in MapServer Studio can be saved as a Mapfile and served using a locally installed
@@ -21,5 +38,9 @@ version of MapServer.
 Natural Earth dataset.
 OGC Features API.
 
-Please get in touch if you have any questions, and thanks for your support.
 
+
+
+
+
+As appreciation for your support there is a link to a 3-month free trial for the "Professional"

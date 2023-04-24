@@ -1,0 +1,11 @@
+https://app.mapserverstudio.net/#kQex4CBd
+
+preloadSymbol(): General error message. unsupported symbol type 1005
+
+            STYLE
+                SYMBOL "hatchsymbol"
+                OUTLINECOLOR 200 200 200 # this should be COLOR!
+                SIZE 3
+                WIDTH 0.2
+                ANGLE 45
+            END
