@@ -9,12 +9,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://mapserverstudio.net/help/formatting.html" />
 <meta property="og:site_name" content="MapServer Studio" />
-<meta property="og:description" content="MapServer Studio allows you to automatically format your Mapfiles. Click the “Format” button on the toolbar to auto-format your Mapfile. By default this also validates that your Mapfile has no synt..." />
+<meta property="og:description" content="With MapServer Studio, you can easily format your Mapfiles. Simply click the “Format” button on the toolbar to automatically format your file. By default, this also checks for any syntax errors in ..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
-<meta property="og:image" content="https://mapserverstudio.net/_images/social_previews/summary_help_formatting_6c3b62a9.png" />
-<meta property="og:image:alt" content="MapServer Studio allows you to automatically format your Mapfiles. Click the “Format” button on the toolbar to auto-format your Mapfile. By default this also..." />
-<meta name="description" content="MapServer Studio allows you to automatically format your Mapfiles. Click the “Format” button on the toolbar to auto-format your Mapfile. By default this also validates that your Mapfile has no synt..." />
+<meta property="og:image" content="https://mapserverstudio.net/_images/social_previews/summary_help_formatting_7fd8b545.png" />
+<meta property="og:image:alt" content="With MapServer Studio, you can easily format your Mapfiles. Simply click the “Format” button on the toolbar to automatically format your file. By default, th..." />
+<meta name="description" content="With MapServer Studio, you can easily format your Mapfiles. Simply click the “Format” button on the toolbar to automatically format your file. By default, this also checks for any syntax errors in ..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>Formatting Mapfiles &#8212; MapServer Studio</title>
@@ -51,6 +51,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fonts" href="fonts.html" />
+    <link rel="prev" title="Quick Start" href="quickstart.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -102,7 +104,7 @@
  </a>
 </li>
 
-<li class="toctree-l1 nav-item">
+<li class="toctree-l1 current active nav-item">
  <a class="reference internal nav-link" href="help.html">
   Help
  </a>
@@ -153,7 +155,51 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
-    
+    <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contents:
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="help.html">
+   Help
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pricing.html">
+   Pricing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about.html">
+   About
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contents:
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="quickstart.html">
+   Quick Start
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Formatting Mapfiles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fonts.html">
+   Fonts
+  </a>
+ </li>
+</ul>
+
   </div>
 </nav>
   </div>
@@ -193,13 +239,165 @@
                 
   <section id="formatting-mapfiles">
 <h1>Formatting Mapfiles<a class="headerlink" href="#formatting-mapfiles" title="Permalink to this heading">#</a></h1>
-<p>MapServer Studio allows you to automatically format your Mapfiles. Click the “Format” button on the toolbar to auto-format your Mapfile. By default this also
-validates that your Mapfile has no syntax errors.</p>
-<img alt="The MapServer Studio toolbar with the Format button" src="../_images/toolbar-left.png" />
-<p>Formatting options can be configured using the “Settings” dialog, available by clicking the “Settings” button.</p>
-<img alt="The MapServer Studio Settings dialog with Formatting options" src="../_images/settings.png" />
-<p>Formatting is powered using <a class="reference external" href="https://mappyfile.readthedocs.io">mappyfile</a> -
-please see the <a class="reference external" href="https://mappyfile.readthedocs.io/en/latest/pretty_printing.html">Pretty Printing</a> documentation for further details.</p>
+<p>With MapServer Studio, you can easily format your Mapfiles. Simply click the “Format” button on the toolbar to automatically format your file.
+By default, this also checks for any syntax errors in your Mapfile.</p>
+<a class="reference internal image-reference" href="../_images/toolbar-left-format.png"><img alt="The MapServer Studio toolbar with the Format button" class="align-center" src="../_images/toolbar-left-format.png" style="width: 479.20000000000005px; height: 25.6px;" /></a>
+<p>You can customise the formatting options by clicking the “Settings” button and accessing the “Settings” dialog.</p>
+<a class="reference internal image-reference" href="../_images/settings_formatting.png"><img alt="The MapServer Studio Settings dialog with Formatting options" class="align-center" src="../_images/settings_formatting.png" style="width: 280.0px; height: 387.79999999999995px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can leave the Settings options screen open and continue to click the Format button to reformat your Mapfile using various options.</p>
+</div>
+<p>Formatting options are detailed below. Formatting is powered using <a class="reference external" href="https://mappyfile.readthedocs.io">mappyfile</a> - please
+see the <a class="reference external" href="https://mappyfile.readthedocs.io/en/latest/pretty_printing.html">Pretty Printing</a> documentation for further details.</p>
+<video controls="True" height="600" preload="auto" width="600"><source src="../_static/videos/mapfile-formatting.mp4" type="video/mp4"></video><section id="indent-level">
+<h2>Indent Level<a class="headerlink" href="#indent-level" title="Permalink to this heading">#</a></h2>
+<p>This setting allows you to indent your Mapfile blocks by either 2 or 4 spaces.</p>
+<div class="highlight-mapfile notranslate"><div class="highlight"><pre><span></span><span class="c"># indentation set to 2</span>
+<span class="k">LAYER</span>
+  <span class="k">NAME</span> <span class="s">&quot;countries&quot;</span>
+  <span class="k">TYPE</span> <span class="nb">POLYGON</span>
+  <span class="p">...</span>
+  <span class="k">CLASS</span>
+    <span class="k">STYLE</span>
+      <span class="k">COLOR</span> <span class="mi">60</span> <span class="mi">179</span> <span class="mi">113</span>
+      <span class="k">OUTLINECOLOR</span> <span class="mi">255</span> <span class="mi">255</span> <span class="mi">255</span>
+      <span class="k">OUTLINEWIDTH</span> <span class="mf">0.1</span>
+    <span class="k">END</span>
+  <span class="k">END</span>
+<span class="k">END</span>
+
+<span class="c"># indentation set to 4</span>
+  <span class="k">LAYER</span>
+      <span class="k">NAME</span> <span class="s">&quot;countries&quot;</span>
+      <span class="k">TYPE</span> <span class="nb">POLYGON</span>
+      <span class="p">...</span>
+      <span class="k">CLASS</span>
+          <span class="k">STYLE</span>
+              <span class="k">COLOR</span> <span class="mi">60</span> <span class="mi">179</span> <span class="mi">113</span>
+              <span class="k">OUTLINECOLOR</span> <span class="mi">255</span> <span class="mi">255</span> <span class="mi">255</span>
+              <span class="k">OUTLINEWIDTH</span> <span class="mf">0.1</span>
+          <span class="k">END</span>
+      <span class="k">END</span>
+  <span class="k">END</span>
+</pre></div>
+</div>
+</section>
+<section id="quote">
+<h2>Quote<a class="headerlink" href="#quote" title="Permalink to this heading">#</a></h2>
+<p>You can choose to use either single or double quotes for values in your Mapfile.
+This is a personal preference, as both quote types work the same way.</p>
+<div class="highlight-mapfile notranslate"><div class="highlight"><pre><span></span><span class="c"># double quotes</span>
+<span class="k">LAYER</span>
+    <span class="k">NAME</span> <span class="s">&quot;countries&quot;</span>
+    <span class="k">CONNECTION</span> <span class="s">&quot;/data/naturalearth/fgb&quot;</span>
+    <span class="k">DATA</span> <span class="s">&quot;ne_10m_admin_0_countries&quot;</span>
+    <span class="k">PROCESSING</span> <span class="s">&quot;CLOSE_CONNECTION=DEFER&quot;</span>
+    <span class="k">PROJECTION</span>
+        <span class="s">&quot;init=epsg:4326&quot;</span>
+    <span class="k">END</span>
+    <span class="p">...</span>
+
+<span class="c"># single quotes</span>
+<span class="k">LAYER</span>
+    <span class="k">NAME</span> <span class="s">&#39;countries&#39;</span>
+    <span class="k">CONNECTION</span> <span class="s">&#39;/data/naturalearth/fgb&#39;</span>
+    <span class="k">DATA</span> <span class="s">&#39;ne_10m_admin_0_countries&#39;</span>
+    <span class="k">PROCESSING</span> <span class="s">&#39;CLOSE_CONNECTION=DEFER&#39;</span>
+    <span class="k">PROJECTION</span>
+        <span class="s">&#39;init=epsg:4326&#39;</span>
+    <span class="k">END</span>
+    <span class="p">...</span>
+</pre></div>
+</div>
+</section>
+<section id="add-closing-block-comments">
+<h2>Add Closing Block Comments<a class="headerlink" href="#add-closing-block-comments" title="Permalink to this heading">#</a></h2>
+<p>This option adds each block’s name as a comment next to its corresponding <code class="docutils literal notranslate"><span class="pre">END</span></code> keyword. This can be useful when editing large Mapfiles
+which can have several <code class="docutils literal notranslate"><span class="pre">END</span></code> tags grouped together.</p>
+<div class="highlight-mapfile notranslate"><div class="highlight"><pre><span></span><span class="k">LAYER</span>
+    <span class="k">NAME</span> <span class="s">&quot;countries&quot;</span>
+    <span class="k">TYPE</span> <span class="nb">POLYGON</span>
+    <span class="k">PROJECTION</span>
+        <span class="s">&quot;init=epsg:4326&quot;</span>
+    <span class="k">END</span> <span class="c"># PROJECTION</span>
+    <span class="p">...</span>
+    <span class="k">CLASS</span>
+        <span class="k">STYLE</span>
+            <span class="k">COLOR</span> <span class="mi">60</span> <span class="mi">179</span> <span class="mi">113</span>
+            <span class="k">OUTLINECOLOR</span> <span class="mi">255</span> <span class="mi">255</span> <span class="mi">255</span>
+            <span class="k">OUTLINEWIDTH</span> <span class="mf">0.1</span>
+        <span class="c"># note the following END keywords are now annotated</span>
+        <span class="k">END</span> <span class="c"># STYLE</span>
+    <span class="k">END</span> <span class="c"># CLASS</span>
+<span class="k">END</span> <span class="c"># LAYER</span>
+</pre></div>
+</div>
+</section>
+<section id="align-key-values-in-block">
+<h2>Align Key Values in Block<a class="headerlink" href="#align-key-values-in-block" title="Permalink to this heading">#</a></h2>
+<p>This option vertically aligns keys and values within each block, improving the readability of your Mapfiles.</p>
+<div class="highlight-mapfile notranslate"><div class="highlight"><pre><span></span><span class="k">LAYER</span>
+    <span class="c"># the following values are all aligned vertically</span>
+    <span class="k">NAME</span>            <span class="s">&quot;countries&quot;</span>
+    <span class="k">TYPE</span>            <span class="nb">POLYGON</span>
+    <span class="k">STATUS</span>          <span class="nb">ON</span>
+    <span class="k">CONNECTIONTYPE</span>  <span class="nb">OGR</span>
+    <span class="k">CONNECTION</span>      <span class="s">&quot;/data/naturalearth/fgb&quot;</span>
+    <span class="k">DATA</span>            <span class="s">&quot;ne_10m_admin_0_countries&quot;</span>
+    <span class="k">EXTENT</span>          <span class="p">-</span><span class="mf">180.0</span> <span class="p">-</span><span class="mf">90.0</span> <span class="mf">180.0</span> <span class="mi">90</span>
+    <span class="k">PROCESSING</span>      <span class="s">&quot;CLOSE_CONNECTION=DEFER&quot;</span>
+    <span class="k">CLASS</span>
+        <span class="k">STYLE</span>
+            <span class="k">COLOR</span>           <span class="mi">60</span> <span class="mi">179</span> <span class="mi">113</span>
+            <span class="k">OUTLINECOLOR</span>    <span class="mi">255</span> <span class="mi">255</span> <span class="mi">255</span>
+            <span class="k">OUTLINEWIDTH</span>    <span class="mf">0.1</span>
+        <span class="k">END</span>
+    <span class="k">END</span>
+<span class="k">END</span>
+</pre></div>
+</div>
+</section>
+<section id="move-complex-types-to-the-end-of-a-block">
+<h2>Move Complex Types to the End of a Block<a class="headerlink" href="#move-complex-types-to-the-end-of-a-block" title="Permalink to this heading">#</a></h2>
+<p>This option moves any Mapfile objects to the bottom of its parent, leaving simple key value pairs at the top of a block.</p>
+<div class="highlight-mapfile notranslate"><div class="highlight"><pre><span></span><span class="k">LAYER</span>
+    <span class="c"># simple key, value pairs are moved to the top of the block</span>
+    <span class="k">NAME</span> <span class="s">&quot;cities&quot;</span>
+    <span class="k">TYPE</span> <span class="nb">POINT</span>
+    <span class="k">STATUS</span> <span class="nb">ON</span>
+    <span class="k">CONNECTIONTYPE</span> <span class="nb">OGR</span>
+    <span class="k">CONNECTION</span> <span class="s">&quot;/data/naturalearth/fgb&quot;</span>
+    <span class="k">DATA</span> <span class="s">&quot;SELECT *, 15-LABELRANK AS POINTSIZE FROM ne_110m_populated_places&quot;</span>
+    <span class="k">EXTENT</span> <span class="p">-</span><span class="mf">180.0</span> <span class="p">-</span><span class="mf">90.0</span> <span class="mf">180.0</span> <span class="mi">90</span>
+    <span class="c"># PROJECTION and CLASS have nested properties so are moved to the</span>
+    <span class="c"># bottom of the LAYER block</span>
+    <span class="k">PROJECTION</span>
+        <span class="s">&quot;init=epsg:4326&quot;</span>
+    <span class="k">END</span>
+    <span class="k">CLASS</span>
+        <span class="k">EXPRESSION</span> <span class="p">(</span> <span class="nx">[WORLDCITY]</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">)</span>
+        <span class="k">STYLE</span>
+            <span class="k">SYMBOL</span> <span class="s">&quot;circlef&quot;</span>
+            <span class="k">COLOR</span> <span class="s">&quot;#6A5ACD&quot;</span>
+            <span class="k">SIZE</span> <span class="nx">[POINTSIZE]</span>
+        <span class="k">END</span>
+    <span class="k">END</span>
+<span class="k">END</span>
+</pre></div>
+</div>
+</section>
+<section id="keep-mapfile-comments">
+<h2>Keep Mapfile Comments<a class="headerlink" href="#keep-mapfile-comments" title="Permalink to this heading">#</a></h2>
+<p>This option keeps any Mapfile comments when reformatting a Mapfile. By default this option is set to <code class="docutils literal notranslate"><span class="pre">ON</span></code>
+to avoid losing comments when clicking the Format button. Sometimes it is useful to strip all comments from a Mapfile,
+for example when deploying to production.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that this feature is experimental, and the position of comments in your Mapfile
+may change when reformatted. This could result in some comments being lost in certain cases.</p>
+</div>
+</section>
 </section>
 
 
@@ -210,6 +408,20 @@ please see the <a class="reference external" href="https://mappyfile.readthedocs
               <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="quickstart.html" title="previous page">
+      <i class="fas fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Quick Start</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="fonts.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">Fonts</p>
+  </div>
+  <i class="fas fa-angle-right"></i>
+  </a>
 </div>
               </footer>
               

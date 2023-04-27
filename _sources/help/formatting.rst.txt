@@ -1,18 +1,193 @@
 Formatting Mapfiles
 ===================
 
-MapServer Studio allows you to automatically format your Mapfiles. Click the "Format" button on the toolbar to auto-format your Mapfile. By default this also
-validates that your Mapfile has no syntax errors. 
+With MapServer Studio, you can easily format your Mapfiles. Simply click the "Format" button on the toolbar to automatically format your file. 
+By default, this also checks for any syntax errors in your Mapfile.
 
-.. image:: ../images/help/toolbar-left.png
+.. image:: ../images/help/toolbar-left-format.png
   :alt: The MapServer Studio toolbar with the Format button
+  :scale: 80%
+  :align: center
 
-Formatting options can be configured using the "Settings" dialog, available by clicking the "Settings" button. 
+You can customise the formatting options by clicking the "Settings" button and accessing the "Settings" dialog.
 
-.. image:: ../images/help/settings.png
+.. image:: ../images/help/settings_formatting.png
   :alt: The MapServer Studio Settings dialog with Formatting options
+  :scale: 70%
+  :align: center
+
+.. note::
+
+    You can leave the Settings options screen open and continue to click the Format button to reformat your Mapfile using various options.
+
+Formatting options are detailed below. Formatting is powered using `mappyfile <https://mappyfile.readthedocs.io>`_ - please 
+see the `Pretty Printing <https://mappyfile.readthedocs.io/en/latest/pretty_printing.html>`_ documentation for further details.
+
+.. video:: ../_static/videos/mapfile-formatting.mp4
+    :height: 600
+    :width: 600
+
+Indent Level
+------------
+
+This setting allows you to indent your Mapfile blocks by either 2 or 4 spaces.
+
+.. code-block:: mapfile
+
+  # indentation set to 2
+  LAYER
+    NAME "countries"
+    TYPE POLYGON
+    ...
+    CLASS
+      STYLE
+        COLOR 60 179 113
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 0.1
+      END
+    END
+  END
+
+  # indentation set to 4
+    LAYER
+        NAME "countries"
+        TYPE POLYGON
+        ...
+        CLASS
+            STYLE
+                COLOR 60 179 113
+                OUTLINECOLOR 255 255 255
+                OUTLINEWIDTH 0.1
+            END
+        END
+    END
+
+Quote
+-----
+
+You can choose to use either single or double quotes for values in your Mapfile. 
+This is a personal preference, as both quote types work the same way.
+
+.. code-block:: mapfile
+
+    # double quotes
+    LAYER
+        NAME "countries"
+        CONNECTION "/data/naturalearth/fgb"
+        DATA "ne_10m_admin_0_countries"
+        PROCESSING "CLOSE_CONNECTION=DEFER"
+        PROJECTION
+            "init=epsg:4326"
+        END
+        ...
+
+    # single quotes
+    LAYER
+        NAME 'countries'
+        CONNECTION '/data/naturalearth/fgb'
+        DATA 'ne_10m_admin_0_countries'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        PROJECTION
+            'init=epsg:4326'
+        END
+        ...
+
+Add Closing Block Comments
+--------------------------
+
+This option adds each block's name as a comment next to its corresponding ``END`` keyword. This can be useful when editing large Mapfiles
+which can have several ``END`` tags grouped together.
+
+.. code-block:: mapfile
+
+    LAYER
+        NAME "countries"
+        TYPE POLYGON
+        PROJECTION
+            "init=epsg:4326"
+        END # PROJECTION
+        ...
+        CLASS
+            STYLE
+                COLOR 60 179 113
+                OUTLINECOLOR 255 255 255
+                OUTLINEWIDTH 0.1
+            # note the following END keywords are now annotated
+            END # STYLE
+        END # CLASS
+    END # LAYER
+
+Align Key Values in Block
+-------------------------
+
+This option vertically aligns keys and values within each block, improving the readability of your Mapfiles.
+
+.. code-block:: mapfile
+
+    LAYER
+        # the following values are all aligned vertically
+        NAME            "countries"
+        TYPE            POLYGON
+        STATUS          ON
+        CONNECTIONTYPE  OGR
+        CONNECTION      "/data/naturalearth/fgb"
+        DATA            "ne_10m_admin_0_countries"
+        EXTENT          -180.0 -90.0 180.0 90
+        PROCESSING      "CLOSE_CONNECTION=DEFER"
+        CLASS
+            STYLE
+                COLOR           60 179 113
+                OUTLINECOLOR    255 255 255
+                OUTLINEWIDTH    0.1
+            END
+        END
+    END
+
+Move Complex Types to the End of a Block
+----------------------------------------
+
+This option moves any Mapfile objects to the bottom of its parent, leaving simple key value pairs at the top of a block.
+
+.. code-block:: mapfile
+
+    LAYER
+        # simple key, value pairs are moved to the top of the block
+        NAME "cities"
+        TYPE POINT
+        STATUS ON
+        CONNECTIONTYPE OGR
+        CONNECTION "/data/naturalearth/fgb"
+        DATA "SELECT *, 15-LABELRANK AS POINTSIZE FROM ne_110m_populated_places"
+        EXTENT -180.0 -90.0 180.0 90
+        # PROJECTION and CLASS have nested properties so are moved to the
+        # bottom of the LAYER block
+        PROJECTION
+            "init=epsg:4326"
+        END
+        CLASS
+            EXPRESSION ( [WORLDCITY] = 1 )
+            STYLE
+                SYMBOL "circlef"
+                COLOR "#6A5ACD"
+                SIZE [POINTSIZE]
+            END
+        END
+    END
+
+Keep Mapfile Comments
+---------------------
+
+This option keeps any Mapfile comments when reformatting a Mapfile. By default this option is set to ``ON``
+to avoid losing comments when clicking the Format button. Sometimes it is useful to strip all comments from a Mapfile, 
+for example when deploying to production.
+
+.. note::
+
+    Please note that this feature is experimental, and the position of comments in your Mapfile 
+    may change when reformatted. This could result in some comments being lost in certain cases.
 
 
 
-Formatting is powered using `mappyfile <https://mappyfile.readthedocs.io>`_ - 
-please see the `Pretty Printing <https://mappyfile.readthedocs.io/en/latest/pretty_printing.html>`_ documentation for further details.
+..
+    The following statement only works if a user has made an edit..
+    If you want to revert formatting changes you can right click in the Mapfile editor and select Undo, or press CTRL+Z to revert the changes. 
