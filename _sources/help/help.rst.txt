@@ -20,12 +20,14 @@ Help
    formatting.rst
    fonts.rst
 
-..
-  .. toctree::
-      :maxdepth: 2
-      :caption: Posts:
-  
-      posts/leader-lines.rst
+Below are links to MapServer related posts and articles.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Posts:
+
+   ../posts/mapserver-8.0.1.rst
+
 ..
    browser.rst
    formatting.rst

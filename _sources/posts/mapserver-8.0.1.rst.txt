@@ -1,0 +1,148 @@
+MapServer 8.0.1 Release
+=======================
+
+.. image:: ../images/mapserver-logo.jpg
+  :alt: MapServer Logo
+  :align: right
+
+MapServer 8.0.1 was released on April 21st 2023. 8.0.1 is a maintenance release which means it is fully compatible with
+MapServer 8.0.0 and focuses on fixes and
+
+The `MapServer Security Policy <https://github.com/MapServer/MapServer/blob/main/SECURITY.md>`_ contains a good summary of
+what release numbers mean. For a version in the format x.y.z:
+
+    x
+
+    Major release series number.
+    Major releases indicate substantial changes to the software and backwards compatibility is not guaranteed across series. Current release series is 8
+
+    y
+
+    Minor release series number.
+    Minor releases indicate smaller, functional additions or improvements to the software and should be generally backwards compatible within a major release series. Users should be able to confidently upgrade from one minor release to another within the same release series, so from 7.4.x to 7.6.x.
+
+    z
+
+    Point release series number.
+    Point releases indicate maintenance releases - usually a combination of bug and security fixes and perhaps small feature additions. 
+    Backwards compatibility should be preserved and users should be able to confidently upgrade between point releases 
+    within the same release series, so from 7.6.4 to 7.6.5.
+
+The full release notes are at https://mapserver.org/development/changelog/changelog-8-0.html#changelog-8-0-1
+
+
+
+Highlights
+----------
+
+Lots of these are marked as backpots.
+Fixes are added to the main branch and then if they are not new features or break existing functionality are backported
+into the currently released branch.
+These features will all be in MapServer 8.2
+
+
+
+PROJ_DATA set through config option: take into account possibility of multiple paths separated by ; on Windows or : on Unix
+PROJ_DATA 
+PROJ_LIB
+https://github.com/MapServer/MapServer/pull/6867
+
+
+
+Memory leak fixes
+-----------------
+
+
+OSS-Fuzz is an open source project launched by Google in 2016 that aims to improve the security and stability of 
+software by providing continuous fuzz testing to open source software projects. Fuzz testing is a technique where software 
+is bombarded with a large number of inputs to identify vulnerabilities and crashes.
+
+Over 50 fixes from Thanks to Even Rouault https://github.com/rouault
+
+Fuzzing
+
+See README https://github.com/MapServer/MapServer/tree/main/fuzzers
+
+https://demo.mapserver.org/
+
+Non-code related updates such as keeping the Continuous Integration running [https://github.com/MapServer/MapServer/pull/6864], and updating
+dependencies such as CMake. 
+
+CI updates.
+Demo server fixes https://github.com/MapServer/MapServer/pull/6436
+
+Updating the docs for the 8.0.1 release
+
+https://github.com/MapServer/MapServer-documentation/
+
+https://github.com/jmckenna
+
+Python 2.7 MapScript builds are no longer being tested
+https://github.com/MapServer/MapServer/pull/6846
+
+
+OGC Feature API fixes
+---------------------
+
+https://github.com/MapServer/MapServer/pull/6617
+
+
+New feature
+https://github.com/MapServer/MapServer/pull/6817
+https://github.com/MapServer/MapServer/issues/6631 - Encoding of shapefile
+
+
+Allow NULL shapes to be returned in WFS GetFeature requests
+https://github.com/MapServer/MapServer/pull/6731
+
+This is useful if you have a list of features with attributes and want to return records with null geometries in the
+same list.
+
+
+
+Security
+--------
+
+
+https://github.com/MapServer/MapServer/pull/6808
+
+<!-- MapServer version 8.0.0 OUTPUT=PNG OUTPUT=JPEG OUTPUT=KML SUPPORTS=PROJ SUPPORTS=AGG SUPPORTS=FREETYPE SUPPORTS=CAIRO SUPPORTS=SVG_SYMBOLS SUPPORTS=RSVG SUPPORTS=ICONV SUPPORTS=FRIBIDI SUPPORTS=WMS_SERVER SUPPORTS=WMS_CLIENT SUPPORTS=WFS_SERVER SUPPORTS=WFS_CLIENT SUPPORTS=WCS_SERVER SUPPORTS=SOS_SERVER SUPPORTS=OGCAPI_SERVER SUPPORTS=FASTCGI SUPPORTS=GEOS SUPPORTS=PBF INPUT=JPEG INPUT=POSTGIS INPUT=OGR INPUT=GDAL INPUT=SHAPEFILE INPUT=FLATGEOBUF -->
+
+MS_NO_VERSION  variable can be removed from Mapfiles and CONFIG files.
+
+
+https://github.com/MapServer/MapServer/pull/6794
+Add Proj and GDAL versions to MapServer version output
+
+.. code-block: bat
+
+    MapServer version 8.1-dev PROJ version 7.2 GDAL version 3.4 OUTPUT=PNG 
+
+Redacting passwords from error and log messages:
+
+https://github.com/MapServer/MapServer/pull/6616
+
+
+MapScript
+---------
+
+Allow a CONFIG to be used when loading a Mapfile from a string
+https://github.com/MapServer/MapServer/pull/6646
+
+.. code-block: python
+
+    mapscript.fromstring("MAP NAME TEST END", r"C:/MapfileResources/", config_file)
+
+
+CGI Parameters
+--------------
+
+There have a been a few posts on th e user mailing lists about not being able to dynamically
+change various Mapfile parameters in MapServer 8.0.
+
+
+https://github.com/MapServer/MapServer/pull/6804
+
+https://mapserver.org/cgi/runsub.html#runsub
+
+Allows runtime substitution on the web TEMPLATE property.
