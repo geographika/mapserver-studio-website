@@ -9,12 +9,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://mapserverstudio.net/posts/mapserver-8.0.1.html" />
 <meta property="og:site_name" content="MapServer Studio" />
-<meta property="og:description" content="MapServer Logo MapServer 8.0.1 was released on April 21st 2023. 8.0.1 is a maintenance release which means it is fully compatible with MapServer 8.0.0 and focuses on fixes and The MapServer Securit..." />
+<meta property="og:description" content="MapServer Logo MapServer 8.0.1 was released on April 21st 2023. 8.0.1 is a maintenance release which means it is fully compatible with MapServer 8.0.0 and focuses on fixes and improvements, without..." />
 <meta property="og:image:width" content="1146" />
 <meta property="og:image:height" content="600" />
 <meta property="og:image" content="https://mapserverstudio.net/_images/social_previews/summary_posts_mapserver-8.0.1_e248331d.png" />
 <meta property="og:image:alt" content="MapServer Logo MapServer 8.0.1 was released on April 21st 2023. 8.0.1 is a maintenance release which means it is fully compatible with MapServer 8.0.0 and fo..." />
-<meta name="description" content="MapServer Logo MapServer 8.0.1 was released on April 21st 2023. 8.0.1 is a maintenance release which means it is fully compatible with MapServer 8.0.0 and focuses on fixes and The MapServer Securit..." />
+<meta name="description" content="MapServer Logo MapServer 8.0.1 was released on April 21st 2023. 8.0.1 is a maintenance release which means it is fully compatible with MapServer 8.0.0 and focuses on fixes and improvements, without..." />
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>MapServer 8.0.1 Release &#8212; MapServer Studio</title>
@@ -51,7 +51,7 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Fonts" href="../help/fonts.html" />
+    <link rel="prev" title="Posts" href="index.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -103,9 +103,15 @@
  </a>
 </li>
 
-<li class="toctree-l1 current active nav-item">
- <a class="reference internal nav-link" href="../help/help.html">
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../help/index.html">
   Help
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Posts
  </a>
 </li>
 
@@ -156,50 +162,6 @@
   <div class="bd-toc-item active">
     <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Contents:
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../help/help.html">
-   Help
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../pricing.html">
-   Pricing
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../about.html">
-   About
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Contents:
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../help/quickstart.html">
-   Quick Start
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../help/formatting.html">
-   Formatting Mapfiles
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../help/fonts.html">
-   Fonts
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   Posts:
  </span>
 </p>
@@ -249,89 +211,178 @@
               <article class="bd-article" role="main">
                 
   <section id="mapserver-8-0-1-release">
-<h1>MapServer 8.0.1 Release<a class="headerlink" href="#mapserver-8-0-1-release" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id3" role="doc-backlink">MapServer 8.0.1 Release</a><a class="headerlink" href="#mapserver-8-0-1-release" title="Permalink to this heading">#</a></h1>
 <img alt="MapServer Logo" class="align-right" src="../_images/mapserver-logo.jpg" />
 <p>MapServer 8.0.1 was released on April 21st 2023. 8.0.1 is a maintenance release which means it is fully compatible with
-MapServer 8.0.0 and focuses on fixes and</p>
+MapServer 8.0.0 and focuses on fixes and improvements, without any breaking changes.
+The full release notes are <a class="reference external" href="https://mapserver.org/development/changelog/changelog-8-0.html#changelog-8-0-1">here</a>.</p>
+<nav class="contents" id="page-contents">
+<p class="topic-title">Page Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#mapserver-8-0-1-release" id="id3">MapServer 8.0.1 Release</a></p>
+<ul>
+<li><p><a class="reference internal" href="#enhancements" id="id4">Enhancements</a></p>
+<ul>
+<li><p><a class="reference internal" href="#cgi-parameters" id="id5">CGI Parameters</a></p></li>
+<li><p><a class="reference internal" href="#features-without-a-geometry" id="id6">Features without a Geometry</a></p></li>
+<li><p><a class="reference internal" href="#the-proj-environment-variable" id="id7">The PROJ Environment Variable</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#security" id="id8">Security</a></p>
+<ul>
+<li><p><a class="reference internal" href="#restricted-version-information" id="id9">Restricted Version Information</a></p></li>
+<li><p><a class="reference internal" href="#password-redaction" id="id10">Password Redaction</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#memory-leak-fixes" id="id11">Memory Leak Fixes</a></p></li>
+<li><p><a class="reference internal" href="#mapserver-infrastructure-updates" id="id12">MapServer Infrastructure Updates</a></p></li>
+<li><p><a class="reference internal" href="#ogc-feature-api-fixes" id="id13">OGC Feature API fixes</a></p></li>
+<li><p><a class="reference internal" href="#mapscript" id="id14">MapScript</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<p>Lots of the changes in the release notes are marked as backports. These are fixes are added to the development branch
+and if they are not new features, and don’t change existing functionality, are “backported” into the active release branch.</p>
 <p>The <a class="reference external" href="https://github.com/MapServer/MapServer/blob/main/SECURITY.md">MapServer Security Policy</a> contains a good summary of
-what release numbers mean. For a version in the format x.y.z:</p>
-<blockquote>
-<div><p>x</p>
-<p>Major release series number.
-Major releases indicate substantial changes to the software and backwards compatibility is not guaranteed across series. Current release series is 8</p>
-<p>y</p>
-<p>Minor release series number.
-Minor releases indicate smaller, functional additions or improvements to the software and should be generally backwards compatible within a major release series. Users should be able to confidently upgrade from one minor release to another within the same release series, so from 7.4.x to 7.6.x.</p>
-<p>z</p>
-<p>Point release series number.
-Point releases indicate maintenance releases - usually a combination of bug and security fixes and perhaps small feature additions.
-Backwards compatibility should be preserved and users should be able to confidently upgrade between point releases
-within the same release series, so from 7.6.4 to 7.6.5.</p>
-</div></blockquote>
-<p>The full release notes are at <a class="reference external" href="https://mapserver.org/development/changelog/changelog-8-0.html#changelog-8-0-1">https://mapserver.org/development/changelog/changelog-8-0.html#changelog-8-0-1</a></p>
-<section id="highlights">
-<h2>Highlights<a class="headerlink" href="#highlights" title="Permalink to this heading">#</a></h2>
-<p>Lots of these are marked as backpots.
-Fixes are added to the main branch and then if they are not new features or break existing functionality are backported
-into the currently released branch.
-These features will all be in MapServer 8.2</p>
-<p>PROJ_DATA set through config option: take into account possibility of multiple paths separated by ; on Windows or : on Unix
-PROJ_DATA
-PROJ_LIB
-<a class="reference external" href="https://github.com/MapServer/MapServer/pull/6867">https://github.com/MapServer/MapServer/pull/6867</a></p>
+what release numbers mean. Versions are in the format x.y.z, so 8.0.1 is a “point release” in the list of definitions below:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>x - Major release series number.
+Major releases indicate substantial changes to the software and backwards
+compatibility is not guaranteed across series. Current release series is 8
+
+y - Minor release series number.
+Minor releases indicate smaller, functional additions or improvements to
+the software and should be generally backwards compatible within a major release series.
+Users should be able to confidently upgrade from one minor release to another within
+the same release series, so from 7.4.x to 7.6.x.
+
+z - Point release series number.
+Point releases indicate maintenance releases - usually a combination of
+bug and security fixes and perhaps small feature additions.
+Backwards compatibility should be preserved and users should be able to
+confidently upgrade between point releases
+within the same release series, so from 7.6.4 to 7.6.5.
+</pre></div>
+</div>
+<section id="enhancements">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Enhancements</a><a class="headerlink" href="#enhancements" title="Permalink to this heading">#</a></h2>
+<section id="cgi-parameters">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">CGI Parameters</a><a class="headerlink" href="#cgi-parameters" title="Permalink to this heading">#</a></h3>
+<p>Since the 8.0 release there have been a few posts on the user mailing lists about not being able to dynamically
+change various Mapfile parameters in MapServer 8.0. The 8.0.1 release aims to resolve the most common of these,
+and <a class="reference external" href="https://github.com/MapServer/MapServer/pull/6804">pull request #6804</a> allows
+<a class="reference external" href="https://mapserver.org/cgi/runsub.html#runsub">runtime substitution</a> to be used for the web <code class="docutils literal notranslate"><span class="pre">TEMPLATE</span></code> property.</p>
 </section>
-<section id="memory-leak-fixes">
-<h2>Memory leak fixes<a class="headerlink" href="#memory-leak-fixes" title="Permalink to this heading">#</a></h2>
-<p>OSS-Fuzz is an open source project launched by Google in 2016 that aims to improve the security and stability of
-software by providing continuous fuzz testing to open source software projects. Fuzz testing is a technique where software
-is bombarded with a large number of inputs to identify vulnerabilities and crashes.</p>
-<p>Over 50 fixes from Thanks to Even Rouault <a class="reference external" href="https://github.com/rouault">https://github.com/rouault</a></p>
-<p>Fuzzing</p>
-<p>See README <a class="reference external" href="https://github.com/MapServer/MapServer/tree/main/fuzzers">https://github.com/MapServer/MapServer/tree/main/fuzzers</a></p>
-<p><a class="reference external" href="https://demo.mapserver.org/">https://demo.mapserver.org/</a></p>
-<p>Non-code related updates such as keeping the Continuous Integration running [<a class="reference external" href="https://github.com/MapServer/MapServer/pull/6864">https://github.com/MapServer/MapServer/pull/6864</a>], and updating
-dependencies such as CMake.</p>
-<p>CI updates.
-Demo server fixes <a class="reference external" href="https://github.com/MapServer/MapServer/pull/6436">https://github.com/MapServer/MapServer/pull/6436</a></p>
-<p>Updating the docs for the 8.0.1 release</p>
-<p><a class="reference external" href="https://github.com/MapServer/MapServer-documentation/">https://github.com/MapServer/MapServer-documentation/</a></p>
-<p><a class="reference external" href="https://github.com/jmckenna">https://github.com/jmckenna</a></p>
-<p>Python 2.7 MapScript builds are no longer being tested
-<a class="reference external" href="https://github.com/MapServer/MapServer/pull/6846">https://github.com/MapServer/MapServer/pull/6846</a></p>
+<section id="features-without-a-geometry">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Features without a Geometry</a><a class="headerlink" href="#features-without-a-geometry" title="Permalink to this heading">#</a></h3>
+<p>Pull request <a class="reference external" href="https://github.com/MapServer/MapServer/pull/6731">#6731</a> allows features without a geometry
+(NULL shapes) to be returned in WFS GetFeature requests. This is useful if you have a list of features with attributes and
+want to return records with null geometries in the same list.</p>
 </section>
-<section id="ogc-feature-api-fixes">
-<h2>OGC Feature API fixes<a class="headerlink" href="#ogc-feature-api-fixes" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://github.com/MapServer/MapServer/pull/6617">https://github.com/MapServer/MapServer/pull/6617</a></p>
-<p>New feature
-<a class="reference external" href="https://github.com/MapServer/MapServer/pull/6817">https://github.com/MapServer/MapServer/pull/6817</a>
-<a class="reference external" href="https://github.com/MapServer/MapServer/issues/6631">https://github.com/MapServer/MapServer/issues/6631</a> - Encoding of shapefile</p>
-<p>Allow NULL shapes to be returned in WFS GetFeature requests
-<a class="reference external" href="https://github.com/MapServer/MapServer/pull/6731">https://github.com/MapServer/MapServer/pull/6731</a></p>
-<p>This is useful if you have a list of features with attributes and want to return records with null geometries in the
-same list.</p>
+<section id="the-proj-environment-variable">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">The PROJ Environment Variable</a><a class="headerlink" href="#the-proj-environment-variable" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://github.com/MapServer/MapServer/pull/6863">Pull request #6863</a> allows multiple paths to be set for
+the <a class="reference external" href="https://mapserver.org/sq/optimization/environment_variables.html#list-of-all-possible-mapserver-environment-variables">PROJ_LIB environment variable</a>.</p>
+<p>For example the following can now be set in a <code class="docutils literal notranslate"><span class="pre">CONFIG</span></code> file:</p>
+<div class="highlight-mapfile notranslate"><div class="highlight"><pre><span></span><span class="k">CONFIG</span>
+    <span class="k">ENV</span>
+        <span class="k">PROJ_LIB</span> <span class="s">&quot;C:/MapServer/bin/proj9/share;C:</span><span class="se">\T</span><span class="s">emp&quot;</span>
+    <span class="p">...</span>
+</pre></div>
+</div>
+<p>This allows a common system-wide location for a <code class="docutils literal notranslate"><span class="pre">proj.db</span></code> and other projection files, and then another location to store
+custom projections for specific setups.</p>
+<p>Note also that MapServer, as with GDAL, supports the newer <a class="reference external" href="https://proj.org/usage/environmentvars.html#envvar-PROJ_DATA">PROJ_DATA</a> variable name.
+This new name was added in PROJ 9.1 to avoid confusion that the path in the variable should point to the PROJ binaries rather
+than resource files.</p>
+<p>In a Linux machine paths should be separated by <code class="docutils literal notranslate"><span class="pre">:</span></code> for example:</p>
+<div class="highlight-mapfile notranslate"><div class="highlight"><pre><span></span><span class="k">CONFIG</span>
+    <span class="k">ENV</span>
+        <span class="k">PROJ_DATA</span> <span class="s">&quot;/usr/local/share/proj:/var/myprojections&quot;</span>
+    <span class="p">...</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="security">
-<h2>Security<a class="headerlink" href="#security" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://github.com/MapServer/MapServer/pull/6808">https://github.com/MapServer/MapServer/pull/6808</a></p>
-<p>&lt;!– MapServer version 8.0.0 OUTPUT=PNG OUTPUT=JPEG OUTPUT=KML SUPPORTS=PROJ SUPPORTS=AGG SUPPORTS=FREETYPE SUPPORTS=CAIRO SUPPORTS=SVG_SYMBOLS SUPPORTS=RSVG SUPPORTS=ICONV SUPPORTS=FRIBIDI SUPPORTS=WMS_SERVER SUPPORTS=WMS_CLIENT SUPPORTS=WFS_SERVER SUPPORTS=WFS_CLIENT SUPPORTS=WCS_SERVER SUPPORTS=SOS_SERVER SUPPORTS=OGCAPI_SERVER SUPPORTS=FASTCGI SUPPORTS=GEOS SUPPORTS=PBF INPUT=JPEG INPUT=POSTGIS INPUT=OGR INPUT=GDAL INPUT=SHAPEFILE INPUT=FLATGEOBUF –&gt;</p>
-<p>MS_NO_VERSION  variable can be removed from Mapfiles and CONFIG files.</p>
-<p><a class="reference external" href="https://github.com/MapServer/MapServer/pull/6794">https://github.com/MapServer/MapServer/pull/6794</a>
-Add Proj and GDAL versions to MapServer version output</p>
-<p>Redacting passwords from error and log messages:</p>
-<p><a class="reference external" href="https://github.com/MapServer/MapServer/pull/6616">https://github.com/MapServer/MapServer/pull/6616</a></p>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Security</a><a class="headerlink" href="#security" title="Permalink to this heading">#</a></h2>
+<p>There are a couple of security improvements included in the MapServer 8.0.1.</p>
+<section id="restricted-version-information">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Restricted Version Information</a><a class="headerlink" href="#restricted-version-information" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://github.com/MapServer/MapServer/pull/6808">Pull request #6808</a> removes the MapServer
+version and supported types from web responses. Previously the following
+information would have been visible to all users:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- MapServer version 8.0.0 OUTPUT=PNG OUTPUT=JPEG OUTPUT=KML SUPPORTS=PROJ</span>
+<span class="cm">SUPPORTS=AGG SUPPORTS=FREETYPE SUPPORTS=CAIRO SUPPORTS=SVG_SYMBOLS SUPPORTS=RSVG</span>
+<span class="cm">SUPPORTS=ICONV SUPPORTS=FRIBIDI SUPPORTS=WMS_SERVER SUPPORTS=WMS_CLIENT SUPPORTS=WFS_SERVER</span>
+<span class="cm">SUPPORTS=WFS_CLIENT SUPPORTS=WCS_SERVER SUPPORTS=SOS_SERVER SUPPORTS=OGCAPI_SERVER SUPPORTS=FASTCGI</span>
+<span class="cm">SUPPORTS=GEOS SUPPORTS=PBF INPUT=JPEG INPUT=POSTGIS INPUT=OGR INPUT=GDAL INPUT=SHAPEFILE INPUT=FLATGEOBUF</span>
+<span class="cm">--&gt;</span>
+</pre></div>
+</div>
+<p>This information is still displayed when running from the command line (e.g. when using <code class="docutils literal notranslate"><span class="pre">map2img</span></code>, <code class="docutils literal notranslate"><span class="pre">mapserver</span> <span class="pre">-v</span></code>), but
+hiding this when accessed via the web avoids leaking these details.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">MS_NO_VERSION</span></code> environment variable can be removed from Mapfiles and CONFIG files if using <code class="docutils literal notranslate"><span class="pre">8.0.1</span></code> or higher as it no longer
+has any effect.</p>
+<p>The command line details however have been improved as part of <a class="reference external" href="https://github.com/MapServer/MapServer/pull/6794">pull request #6794</a>
+This adds PROJ and GDAL versions to MapServer version output, so the following is now displayed when running <code class="docutils literal notranslate"><span class="pre">mapserver</span> <span class="pre">-v</span></code>.
+These details can now be more easily added to any issues created on GitHub to help resolving bugs that relate to these dependencies.</p>
+</section>
+<section id="password-redaction">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Password Redaction</a><a class="headerlink" href="#password-redaction" title="Permalink to this heading">#</a></h3>
+<p>Pull request <a class="reference external" href="https://github.com/MapServer/MapServer/pull/6616">#6616</a> redacts passwords used for database connections
+from error and log messages. Redactions were already in place, but missed some connection string formats. This code now covers
+all types of database connection strings.</p>
+</section>
+</section>
+<section id="memory-leak-fixes">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Memory Leak Fixes</a><a class="headerlink" href="#memory-leak-fixes" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/google/oss-fuzz/">OSS-Fuzz</a> is an open source project launched by Google in 2016 that aims to improve the security and stability of
+software by providing continuous fuzz testing to open source software projects. Fuzz testing is a technique where software
+is bombarded with a large number of inputs to identify vulnerabilities and crashes.</p>
+<p>MapServer has a collection of functions and scripts for OSS-Fuzz in the <a class="reference external" href="https://github.com/MapServer/MapServer/tree/main/fuzzers">MapServer repository</a>.
+There are over 50 fixes thanks to <a class="reference external" href="https://github.com/rouault">Even Rouault</a> included in the 8.0.1 release.</p>
+</section>
+<section id="mapserver-infrastructure-updates">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">MapServer Infrastructure Updates</a><a class="headerlink" href="#mapserver-infrastructure-updates" title="Permalink to this heading">#</a></h2>
+<p>These are a collection of non-code related fixes, improvements, and enhancements to all the infrastructure that keeps the MapServer project running.</p>
+<ul class="simple">
+<li><p>Updates to the <a class="reference external" href="https://demo.mapserver.org/">MapServer Demo server</a></p></li>
+<li><p>Continuous Integration updates see <a class="reference external" href="https://github.com/MapServer/MapServer/pull/6864">pull request #6864</a>, that are used to ensure
+changes to the MapServer code-base don’t introduce bugs</p></li>
+<li><p>Updates to the <a class="reference external" href="https://github.com/MapServer/MapServer-documentation/">MapServer documentation</a> for the new release</p></li>
+</ul>
+<p>Thanks to <a class="reference external" href="https://github.com/jmckenna">Jeff McKenna</a> for creating the 8.0.1 release and release notes.</p>
+</section>
+<section id="ogc-feature-api-fixes">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">OGC Feature API fixes</a><a class="headerlink" href="#ogc-feature-api-fixes" title="Permalink to this heading">#</a></h2>
+<p>The big new feature of MapServer 8 was the <a class="reference external" href="https://mapserver.org/development/rfc/ms-rfc-134.html">OGC Features API Support</a>.
+Since the 8.0 release a number of minor issues have been fixed, these form part of the 8.0.1 release:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/MapServer/MapServer/pull/6617">Fix to paging of features</a>
+(see <a class="reference external" href="https://github.com/MapServer/MapServer/issues/6613">issue #6613</a>)</p></li>
+<li><p><a class="reference external" href="https://github.com/MapServer/MapServer/pull/6817">Fix to support Shapefile encoding</a>
+(see <a class="reference external" href="https://github.com/MapServer/MapServer/issues/6631">issue #6631</a>).</p></li>
+</ul>
 </section>
 <section id="mapscript">
-<h2>MapScript<a class="headerlink" href="#mapscript" title="Permalink to this heading">#</a></h2>
-<p>Allow a CONFIG to be used when loading a Mapfile from a string
-<a class="reference external" href="https://github.com/MapServer/MapServer/pull/6646">https://github.com/MapServer/MapServer/pull/6646</a></p>
-</section>
-<section id="cgi-parameters">
-<h2>CGI Parameters<a class="headerlink" href="#cgi-parameters" title="Permalink to this heading">#</a></h2>
-<p>There have a been a few posts on th e user mailing lists about not being able to dynamically
-change various Mapfile parameters in MapServer 8.0.</p>
-<p><a class="reference external" href="https://github.com/MapServer/MapServer/pull/6804">https://github.com/MapServer/MapServer/pull/6804</a></p>
-<p><a class="reference external" href="https://mapserver.org/cgi/runsub.html#runsub">https://mapserver.org/cgi/runsub.html#runsub</a></p>
-<p>Allows runtime substitution on the web TEMPLATE property.</p>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">MapScript</a><a class="headerlink" href="#mapscript" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/MapServer/MapServer/pull/6646">Pull request #6646</a> allows a CONFIG files
+to be used when loading a Mapfile from a string, as in the Python MapScript example below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config_file</span> <span class="o">=</span> <span class="s2">&quot;C:/MapServer/apps/mapserer.conf&quot;</span>
+<span class="n">mapscript</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;MAP NAME TEST END&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;C:/MapfileResources/&quot;</span><span class="p">,</span> <span class="n">config_file</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Not supporting this was an oversight following the introduction of the config file in MapServer 8.0. The fix in 8.0.1
+allows Mapfiles that use keys in the <code class="docutils literal notranslate"><span class="pre">PLUGINS</span></code> section of the config file to be used in MapScript.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Python 2.7 MapScript builds are no <a class="reference external" href="https://github.com/MapServer/MapServer/pull/6845">longer being tested</a>, and Python 2.7 is no longer
+supported for MapScript. Python 3.6 to 3.9 however are being tested by the MapServer CI.</p>
+</div>
+<p>I hope you found the above summary useful. You can test your Mapfiles using a recent development version of MapServer
+in MapServer Studio by setting the “MapServer Engine” in the “Settings” diaolog.</p>
+<img alt="MapServer Engine Settings" class="align-center" src="../_images/mapserver_version.png" />
 </section>
 </section>
 
@@ -343,11 +394,11 @@ change various Mapfile parameters in MapServer 8.0.</p>
               <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="../help/fonts.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="index.html" title="previous page">
       <i class="fas fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Fonts</p>
+          <p class="prev-next-title">Posts</p>
       </div>
   </a>
 </div>

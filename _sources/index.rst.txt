@@ -23,7 +23,8 @@ MapServer Studio
    :caption: Contents:
 
    self
-   help/help.rst
+   help/index.rst
+   posts/index.rst
    pricing.rst
    about.rst
 

@@ -39,7 +39,7 @@ Fonts are typically used in a `LABEL <https://mapserver.org/mapfile/label.html>`
     are equivalent.
 
 Below is an example of a label using the `Monsieur La Doulaise <https://fonts.google.com/specimen/Monsieur+La+Doulaise>`_ font from the
-Google fontset. You can play with the `online example here <https://app.mapserverstudio.net/kQex4CBd>`_.
+Google fontset. You can play with the `online example here <https://app.mapserverstudio.net/kQex4CBd>`__.
 
 .. code-block:: mapfile
 
@@ -60,7 +60,7 @@ Google fontset. You can play with the `online example here <https://app.mapserve
   :alt: Screenshot showing a map using the Monsieur La Doulaise font
 
 With a change of font and just a couple of changes to the labels and the map colour you can create a very
-different looking map. You can play with the `online example here <https://app.mapserverstudio.net/d8dQZxIY>`_.
+different looking map. You can play with the `online example here <https://app.mapserverstudio.net/d8dQZxIY>`__.
 
   .. code-block:: mapfile
 

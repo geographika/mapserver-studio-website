@@ -19,17 +19,3 @@ Help
    quickstart.rst
    formatting.rst
    fonts.rst
-
-Below are links to MapServer related posts and articles.
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Posts:
-
-   ../posts/mapserver-8.0.1.rst
-
-..
-   browser.rst
-   formatting.rst
-   properties.rst
-   user.rst

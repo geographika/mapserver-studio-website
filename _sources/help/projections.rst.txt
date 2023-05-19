@@ -1,3 +1,6 @@
+Projections
+===========
+
 msProcessProjection(): Projection library error. proj error "Invalid value for an argument" for "init=ESRI:54009" - note this is case-sensitive on Linux
 so the file would need to be named ``ESRI``
 
@@ -9,6 +12,7 @@ https://proj-tmp.readthedocs.io/en/docs/usage/environmentvars.html#envvar-PROJ_L
 Starting with PROJ 6, multiple directories can be specified. 
 On Unix, they should be separated by the colon (:) character. on Windows, by the semi-colon (;) character.
 
+.. code-block:: bat
 
     PROJECTION
         "init=esri:54009" # file should be named lower-case
