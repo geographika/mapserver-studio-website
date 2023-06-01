@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<meta property="og:title" content="Raster Analysis Using MapServer" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mapserverstudio.net/posts/raster_analysis.html" />
+<meta property="og:site_name" content="MapServer Studio" />
+<meta property="og:description" content="Page Contents: Raster Analysis Using MapServer- Introduction, GDAL and Raster Analysis, Source Datasets, Analysis Example.. Introduction: MapServer has the capability to read and serve both raster ..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="https://mapserverstudio.net/_images/social_previews/summary_posts_raster_analysis_29724fab.png" />
+<meta property="og:image:alt" content="Page Contents: Raster Analysis Using MapServer- Introduction, GDAL and Raster Analysis, Source Datasets, Analysis Example.. Introduction: MapServer has the c..." />
+<meta name="description" content="Page Contents: Raster Analysis Using MapServer- Introduction, GDAL and Raster Analysis, Source Datasets, Analysis Example.. Introduction: MapServer has the capability to read and serve both raster ..." />
+<meta name="twitter:card" content="summary_large_image" />
+
+    <title>Raster Analysis Using MapServer &#8212; MapServer Studio</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/features.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/twitter.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="MapServer 8.0.1 Release" href="mapserver-8.0.1.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/" class="logo__image only-dark" alt="Logo image">
+  
+  
+    <p class="title logo__title">MapServer Studio</p>
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  MapServer Studio
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../help/index.html">
+  Help
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Posts
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../pricing.html">
+  Pricing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../about.html">
+  About
+ </a>
+</li>
+
+    
+    <li class="nav-item">
+        <a class="nav-link nav-external" href="https://mapserverstudio.eu.auth0.com/authorize?response_type=code&client_id=vKBoAqZQzwn9RhR8sDNxwbJExQZNtYzS&redirect_uri=https://app.mapserverstudio.net&scope=email&screen_hint=signup">Sign Up<i class="fas fa-external-link-alt"></i></a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link nav-external" href="https://app.mapserverstudio.net">Try MapServer Studio<i class="fas fa-external-link-alt"></i></a>
+    </li>
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Posts:
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mapserver-8.0.1.html">
+   MapServer 8.0.1 Release
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Raster Analysis Using MapServer
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      ﻿<a class="twitter-timeline"
+   href="https://twitter.com/mapserverstudio"
+   data-tweet-limit=3>
+    Tweets by @mapserverstudio
+</a>
+<a class="twitter-follow-button"
+   data-show-count="false"
+   href="https://twitter.com/mapserverstudio">
+    Follow @mapserverstudio
+</a>
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="raster-analysis-using-mapserver">
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">Raster Analysis Using MapServer</a><a class="headerlink" href="#raster-analysis-using-mapserver" title="Permalink to this heading">#</a></h1>
+<nav class="contents" id="page-contents">
+<p class="topic-title">Page Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#raster-analysis-using-mapserver" id="id1">Raster Analysis Using MapServer</a></p>
+<ul>
+<li><p><a class="reference internal" href="#introduction" id="id2">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#gdal-and-raster-analysis" id="id3">GDAL and Raster Analysis</a></p></li>
+<li><p><a class="reference internal" href="#source-datasets" id="id4">Source Datasets</a></p></li>
+<li><p><a class="reference internal" href="#analysis-example" id="id5">Analysis Example</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="introduction">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>MapServer has the capability to read and serve both raster and vector data. Raster data support is managed through the use of
+<a class="reference external" href="https://gdal.org/">GDAL</a>. This post shows how to perform raster analysis dynamically using MapServer, and display the result.
+To explore the Mapfile used in this example, along with the generated output layer, you can visit the following link:
+<a class="reference external" href="https://app.mapserverstudio.net/#9JBVADFh">https://app.mapserverstudio.net/#9JBVADFh</a>.</p>
+<p>Raster data consists of cells or pixels where each cell has a value representing a particular attribute.
+If you have several raster datasets covering the same area you can create new datasets by making calculations for cells
+in the same location, but from different inputs. See <a class="reference external" href="https://gisgeography.com/map-algebra-global-zonal-focal-local/">What is Map Algebra</a> for
+good introduction to the subject.</p>
+<p>The image below shows an example of adding together the cells in one raster to the values in another, to produce a new raster.</p>
+<img alt="Raster Analysis" class="align-center" src="../_images/raster_analysis.png" />
+<p>In this example, we’ll calculate the difference between cells in two datasets.</p>
+</section>
+<section id="gdal-and-raster-analysis">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">GDAL and Raster Analysis</a><a class="headerlink" href="#gdal-and-raster-analysis" title="Permalink to this heading">#</a></h2>
+<p>Raster Algebra support was added to GDAL 2.2 in 2016 based on <a class="reference external" href="https://gdal.org/development/rfc/rfc62_raster_algebra.html">Request for Comment #62</a>.
+GDAL includes a set of <a class="reference external" href="https://gdal.org/drivers/raster/vrt.html#default-pixel-functions">Default Pixel Functions</a> that allow for
+raster analysis without the need to write any code. These include functions such as:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cmul</span></code> - multiply two rasters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">diff</span></code> - computes the difference between 2 raster bands</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">div</span></code> - divide one raster band by another</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sum</span></code> - sum two or more rasters</p></li>
+</ul>
+<p>For more advanced raster analysis you can write your own pixel functions in Python, and register them with GDAL - these would then be
+available within MapServer.</p>
+<p>The outputs of the raster analysis are a virtual GDAL dataset, in the <a class="reference external" href="https://gdal.org/drivers/raster/vrt.html">GDAL VRT format</a>.
+MapServer layers can be configured to style and serve these VRT layers as OGC services such as WMS, WFS, and WCS.</p>
+</section>
+<section id="source-datasets">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Source Datasets</a><a class="headerlink" href="#source-datasets" title="Permalink to this heading">#</a></h2>
+<p>This example uses two datasets where the maximum temperature value in August is stored in each cell.
+Each cell is 2.5 <a class="reference external" href="https://www.usgs.gov/faqs/how-much-distance-does-a-degree-minute-and-second-cover-your-maps">minutes</a>
+this is ~21 km2 at the equator. The first dataset uses temperatures from August 1960, and the second from August 2021.
+Please keep in mind that this analysis serves as an example, and does not hold scientific validity since I am not a
+climate scientist!</p>
+<p>The datasets are available from <a class="reference external" href="https://www.worldclim.org/data/monthlywth.html">www.worldclim.org</a> and hosted
+at <a class="reference external" href="https://geodata.ucdavis.edu/climate/worldclim/2_1/hist/cts4.06/2.5m/">https://geodata.ucdavis.edu</a>. The GeoTIFFs
+are downscaled from the source datasets created by the <a class="reference external" href="https://crudata.uea.ac.uk/cru/data/hrg/cru_ts_4.06/">Climatic Research Unit, University of East Anglia</a>.</p>
+<p>Incidentally, there is an interesting story associated with the Climatic Research Unit (CRU), where documents and data were compromised through a cyberattack.
+Subsequently, selective data was chosen by climate skeptics, which garnered significant global attention. To quote from
+<a class="reference external" href="https://stories.uea.ac.uk/the-story-behind-the-trick/">The Story behind the Trick</a>:</p>
+<p><em>The science establishment should have had faith in the scientific method and - in the early days of the ‘scandal’ - directly attacked the ludicrous
+claim that a hoax had been perpetrated on the world, over many years, orchestrated by a small group of climate scientists centred in Norwich…”</em></p>
+<p><em>I remember a visit by two gentlemen from Scotland Yard who earnestly told me they would be using Holmes. I had a momentary sense of time-warp -
+until they spelled out they meant the Home Office Large Murder Enquiry System (HOLMES).</em></p>
+</section>
+<section id="analysis-example">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Analysis Example</a><a class="headerlink" href="#analysis-example" title="Permalink to this heading">#</a></h2>
+<p>The sample Mapfile is available in MapServer Studio at <a class="reference external" href="https://app.mapserverstudio.net/#9JBVADFh">https://app.mapserverstudio.net/#9JBVADFh</a>.
+The August 1960 dataset is named <code class="docutils literal notranslate"><span class="pre">August1960MaxTemp</span></code>. By default the Mapfile shows the results of the raster analysis,
+but the source layers can also be displayed by modifying the <code class="docutils literal notranslate"><span class="pre">LAYER</span></code> <code class="docutils literal notranslate"><span class="pre">STATUS</span></code> in the Mapfile.
+Note you will need to set the <code class="docutils literal notranslate"><span class="pre">Difference</span></code> layer <code class="docutils literal notranslate"><span class="pre">STATUS</span></code> to <code class="docutils literal notranslate"><span class="pre">OFF</span></code> or it will be displayed over the top of the source layers.</p>
+<p>The layer order in a Mapfile defines the order they are rendered, so the last layer in a Mapfile with a <code class="docutils literal notranslate"><span class="pre">STATUS</span> <span class="pre">ON</span></code> will always
+be rendered last, and appear at the top of a map output.</p>
+<div class="highlight-mapfile notranslate"><div class="highlight"><pre><span></span><span class="k">LAYER</span>
+    <span class="k">NAME</span> <span class="s">&quot;August1960MaxTemp&quot;</span>
+    <span class="k">STATUS</span> <span class="nb">OFF</span> <span class="c"># set this to ON</span>
+    <span class="k">TYPE</span> <span class="nb">RASTER</span>
+<span class="p">...</span>
+<span class="k">LAYER</span>
+    <span class="k">NAME</span> <span class="s">&quot;Difference&quot;</span>
+    <span class="k">STATUS</span> <span class="nb">ON</span> <span class="c"># set this to OFF</span>
+</pre></div>
+</div>
+<p>The temperature layers are styled using multiple <a class="reference external" href="https://mapserver.org/mapfile/style.html">STYLE</a>
+blocks. The colour palette applied was based on the advice in
+<a class="reference external" href="https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/a-meaningful-temperature-palette/">Creating a Meaningful Temperature Palette</a>.</p>
+<p>Each style block has a <a class="reference external" href="https://mapserver.org/mapfile/style.html#mapfile-style-datarange">DATARANGE</a>
+and a <a class="reference external" href="https://mapserver.org/mapfile/style.html#mapfile-style-colorrange">COLORRANGE</a>. Every pixel is assigned a colour from the colour gradient between the
+first and second colours, based on its relative position between the min and max data values in the data range.</p>
+<div class="highlight-mapfile notranslate"><div class="highlight"><pre><span></span><span class="k">CLASS</span>
+    <span class="k">NAME</span> <span class="s">&quot;colorramp&quot;</span>
+    <span class="k">STYLE</span>
+        <span class="k">COLORRANGE</span> <span class="s">&quot;#e3edfc&quot;</span> <span class="s">&quot;#287593&quot;</span> <span class="c"># a color gradient from light grey to a shade of blue</span>
+        <span class="c"># a pixel value of -20 will be light grey, and values from -20 to 0 will be assigned a color from the colour gradient of light grey to blie</span>
+        <span class="k">DATARANGE</span> <span class="p">-</span><span class="mi">20</span> <span class="mi">0</span>
+        <span class="k">RANGEITEM</span> <span class="s">&quot;value_0&quot;</span> <span class="c"># this is the name of the value band in the raster, the datasets used in the Mapfile have a single band</span>
+    <span class="k">END</span>
+    <span class="k">STYLE</span>
+        <span class="k">COLORRANGE</span> <span class="s">&quot;#29497b&quot;</span> <span class="s">&quot;#759387&quot;</span>
+        <span class="k">DATARANGE</span> <span class="mi">0</span> <span class="mi">20</span>
+        <span class="k">RANGEITEM</span> <span class="s">&quot;value_0&quot;</span>
+    <span class="k">END</span>
+    <span class="k">STYLE</span>
+        <span class="k">COLORRANGE</span> <span class="s">&quot;#bfa96d&quot;</span> <span class="s">&quot;#480d26&quot;</span>
+        <span class="k">DATARANGE</span> <span class="mi">20</span> <span class="mi">50</span>
+        <span class="k">RANGEITEM</span> <span class="s">&quot;value_0&quot;</span>
+    <span class="k">END</span>
+<span class="k">END</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">August1960MaxTemp</span></code> layer is shown below. You can export the Map output to various image formats using the <a class="reference internal" href="../help/export.html#export"><span class="std std-ref">Map Exports</span></a> functionality
+in MapServer Studio.</p>
+<a class="reference internal image-reference" href="../_images/raster_layer1.png"><img alt="Raster Analysis Result" class="align-center" src="../_images/raster_layer1.png" style="width: 573.6px; height: 457.2px;" /></a>
+<p>In this example we are going to make use of GDAL’s <code class="docutils literal notranslate"><span class="pre">diff</span></code> pixel function. We create a <code class="docutils literal notranslate"><span class="pre">DATA</span></code> property in a new layer that will refer to the
+same two source datasets we are displaying above. We also need to calculate the raster sizes from the sources to enter the
+<code class="docutils literal notranslate"><span class="pre">rasterXSize</span></code> and <code class="docutils literal notranslate"><span class="pre">rasterYSize</span></code> properties. We can do this using GDAL’s <code class="docutils literal notranslate"><span class="pre">gdalinfo</span></code> on the command line:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>gdalinfo<span class="w"> </span>wc2.1_2.5m_tmax_1960-06.tif
+</pre></div>
+</div>
+<p>This outputs the following, including the size of the raster:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Driver:<span class="w"> </span>GTiff/GeoTIFF
+Files:<span class="w"> </span>wc2.1_2.5m_tmax_1960-06.tif
+Size<span class="w"> </span>is<span class="w"> </span><span class="m">8640</span>,<span class="w"> </span><span class="m">4320</span>
+Coordinate<span class="w"> </span>System<span class="w"> </span>is:
+GEOGCRS<span class="o">[</span><span class="s2">&quot;WGS 84&quot;</span>,
+</pre></div>
+</div>
+<p>Now we have all the details to populate our <code class="docutils literal notranslate"><span class="pre">DATA</span></code> clause. This is a block of XML that is added to the Mapfile, and wrapped in quotes.
+See the <a class="reference external" href="https://gdal.org/drivers/raster/vrt.html">VRT GDAL Virtual Format</a> page for full details.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>LAYER
+<span class="w">    </span>NAME<span class="w"> </span>&quot;Difference&quot;
+<span class="w">    </span>STATUS<span class="w"> </span>ON
+<span class="w">    </span>TYPE<span class="w"> </span>RASTER
+<span class="w">    </span>CONNECTIONTYPE<span class="w"> </span>OGR
+<span class="w">    </span>DATA<span class="w"> </span>&quot;
+<span class="w">    </span><span class="nt">&lt;VRTDataset</span><span class="w"> </span><span class="na">rasterXSize=</span><span class="s">&#39;8640&#39;</span><span class="w"> </span><span class="na">rasterYSize=</span><span class="s">&#39;4320&#39;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;VRTRasterBand</span><span class="w"> </span><span class="na">dataType=</span><span class="s">&#39;Float32&#39;</span><span class="w"> </span><span class="na">band=</span><span class="s">&#39;1&#39;</span><span class="w"> </span><span class="na">subClass=</span><span class="s">&#39;VRTDerivedRasterBand&#39;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;PixelFunctionType&gt;</span>diff<span class="nt">&lt;/PixelFunctionType&gt;</span>
+<span class="w">            </span><span class="nt">&lt;SimpleSource&gt;</span>
+<span class="w">                </span><span class="nt">&lt;SourceFilename&gt;</span>/data/raster/wc2.1_2.5m_tmax_2021-06.tif<span class="nt">&lt;/SourceFilename&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/SimpleSource&gt;</span>
+<span class="w">            </span><span class="nt">&lt;SimpleSource&gt;</span>
+<span class="w">                </span><span class="nt">&lt;SourceFilename&gt;</span>/data/raster/wc2.1_2.5m_tmax_1960-06.tif<span class="nt">&lt;/SourceFilename&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/SimpleSource&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/VRTRasterBand&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/VRTDataset&gt;</span>
+<span class="w">    </span>&quot;
+</pre></div>
+</div>
+<p>Now we can turn this layer on and MapServer will return a new raster displaying the difference in pixel values between the two raster
+datasets. We can again style the pixel values to show different colours depending on their values.</p>
+<a class="reference internal image-reference" href="../_images/raster_result.png"><img alt="Raster Analysis Result" class="align-center" src="../_images/raster_result.png" style="width: 573.6px; height: 457.2px;" /></a>
+<p>I hope you’ve found this post useful, and please experiment with the Mapfile at <a class="reference external" href="https://app.mapserverstudio.net/#9JBVADFh">https://app.mapserverstudio.net/#9JBVADFh</a>. You
+can also download the datasets used in the example above and run the Mapfile locally using your own installation of MapServer.</p>
+</section>
+</section>
+
+
+              </article>
+              
+
+              
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="mapserver-8.0.1.html" title="previous page">
+      <i class="fas fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">MapServer 8.0.1 Release</p>
+      </div>
+  </a>
+</div>
+              </footer>
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2023, Geographika Ltd..<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

@@ -18,4 +18,5 @@ Help
 
    quickstart.rst
    formatting.rst
+   export.rst
    fonts.rst

@@ -1,0 +1,43 @@
+.. _export:
+
+Map Exports
+===========
+
+MapServer Studio allows the map image in the viewer to be exported to different formats. These can be selected by
+clicking the "Export" button and selecting the output format:
+
+.. image:: ../images/help/export.png
+  :alt: The Export button in MapServer Studio
+  :align: center
+
+For the image formats (including SVG) the image will open in a new browser tab. You can then right-click on the image to save it to disk.
+
+.. image:: ../images/help/export_images.png
+  :alt: Right-click the image to save
+  :scale: 80%
+  :align: center
+
+PDF files will download the PDF directly when selected. The downloaded file name will be something like ``download (1)`` without an
+extension. You may have to rename this to ``download (1).pdf`` to open the file in a PDF reader or browser. 
+
+Currently the following output formats are supported: ``PNG``, ``JPEG``, ``SVG``, and ``PDF``. 
+
+Details on the output format configurations can be seen in the MapServer `OUTPUTFORMAT <https://mapserver.org/mapfile/outputformat.html>`_
+documentation. Please get in touch at support@mapserverstudio.net if you require additional output formats to be added to the user interface, 
+or made available within MapServer Studio. 
+
+
+..
+    Need to workout how to set the size too before adding text below
+
+    To increase the resolution of an image you can set the `RESOLUTION <https://mapserver.org/mapfile/map.html#resolution-parameter>`_ parameter
+    in your Mapfile. This setting is in pixels per inch The default value is 72. The minimum is 10 and the maximum that can be set is 1000.
+
+    .. code-block:: mapfile
+
+    MAP
+        NAME "Example"
+        RESOLUTION 1000
+
+    Note if you change the resolution in your Mapfile you will need to click "Serve" to generate the new output again as exports are based on the
+    map in the viewer. 

@@ -10,6 +10,7 @@ Below are links to MapServer related posts and articles.
    :caption: Posts:
 
    ../posts/mapserver-8.0.1.rst
+   ../posts/raster_analysis.rst
 
 ..
    browser.rst
