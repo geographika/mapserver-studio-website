@@ -1,0 +1,20 @@
+Editing Mapfiles
+================
+
+MapServer Studio uses `Ace <https://ace.c9.io/>`_ a high performance code editor for the web. The editor
+is customised for working with Mapfiles, with the features listed below.
+
+Syntax Highlighting
+-------------------
+
+The editor is configured to use highlighting for the Mapfile syntax. Keywords and Mapfile properties will be displayed
+in different colours.
+
+Code Folding
+------------
+
+The editor comes equipped with a code folding feature, allowing you to collapse Mapfile blocks like 
+``LAYER....END``. This can be useful to hide sections of large Mapfiles to concentrate on specific blocks.
+
+.. video:: ../_static/videos/mapfile-code-folding-crop.mp4
+    :width: 600

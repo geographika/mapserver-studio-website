@@ -17,6 +17,7 @@ Help
    :caption: Contents:
 
    quickstart.rst
+   editing.rst
    formatting.rst
    export.rst
    fonts.rst
