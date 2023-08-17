@@ -38,6 +38,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/features.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mastodon-timeline.min.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -48,6 +49,7 @@
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/twitter.js"></script>
+    <script src="_static/mastodon-timeline.js"></script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -177,8 +179,9 @@
   
     
     <div class="toc-item">
-      ﻿<a class="twitter-timeline"
-   href="https://twitter.com/mapserverstudio"
+      ﻿<!--
+    <a class="twitter-timeline"
+   href="https://twitter.com/mapserverstudio?ref_src=twsrc%5Etfw"
    data-tweet-limit=3>
     Tweets by @mapserverstudio
 </a>
@@ -187,11 +190,18 @@
    href="https://twitter.com/mapserverstudio">
     Follow @mapserverstudio
 </a>
-
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    -->
 <!--
 Currently embedded timelines are broken :-(
 https://twittercommunity.com/t/again-list-widget-says-nothing-to-see-here-yet-if-logged-out/198782/156)
 -->
+
+<div class="mt-timeline">
+    <div id="mt-body" class="mt-body" role="feed">
+        <div class="loading-spinner"></div>
+    </div>
+</div>
     </div>
     
   
