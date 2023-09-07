@@ -9,6 +9,7 @@ Below are links to MapServer related posts and articles.
    :maxdepth: 1
    :caption: Posts:
 
+   ../posts/releases.rst
    ../posts/mapserver-8.0.1.rst
    ../posts/raster_analysis.rst
 

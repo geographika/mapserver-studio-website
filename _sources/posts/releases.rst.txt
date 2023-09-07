@@ -1,0 +1,13 @@
+MapServer Studio Releases
+=========================
+
+New and improved functionality of MapServer Studio is documented here 🚀.
+
+2023-09
+-------
+
++ Integration of the :ref:`Open Web Services Inspector <ows_inspector_label>`.
+  This is a separate open source project, developed for MapServer Studio, for testing Open Web Service requests (such as WMS) 
+  against geospatial servers.
+
++ Undo and Redo buttons added to the code editor - see :ref:`undo_label`.

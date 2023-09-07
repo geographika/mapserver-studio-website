@@ -1,0 +1,26 @@
+.. _ows_inspector_label:
+
+Open Web Services Inspector
+===========================
+
+The Tools menu in the user interface includes the "OwS Inspector" button. This opens a new window containing the 
+`Open Web Services Inspector <https://github.com/geographika/ows-inspector>`_. 
+
+.. image:: ../images/help/ows-inspector-menu.png
+  :alt: The MapServer Studio toolbar with the OwS Inspector button
+
+
+OwS Inspector is a separate open source project, developed for MapServer Studio, for testing Open Web Service requests (such as WMS) 
+against geospatial servers. You can test the standalone version at https://ows.mapserverstudio.net/.
+
+The advantage of integrating it into MapServer Studio is that is makes it very easy to see the effect of Mapfile changes
+on WMS and WFS servers as shown in the video below.
+
+.. video:: ../_static/videos/ows-inspector.mp4
+    :height: 400
+    :width: 600
+
+.. note::
+
+    If you have made changes in your Mapfile - remember to press "Serve". This will update the "Server URL" in the
+    Open Web Services Inspector window to point to the new Mapfile.

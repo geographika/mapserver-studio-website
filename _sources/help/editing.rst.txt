@@ -10,6 +10,18 @@ Syntax Highlighting
 The editor is configured to use highlighting for the Mapfile syntax. Keywords and Mapfile properties will be displayed
 in different colours.
 
+.. _undo_label:
+
+Undo and Redo
+-------------
+
+The File menu contains an Undo and a Redo button to help with editing Mapfiles.
+
+.. image:: ../images/help/undo-redo.png
+  :alt: The MapServer Studio toolbar with the OwS Inspector button
+
+The Shortcut keys CTRL+U for **Undo** and CTRL+SHIFT+Z for **Redo** can also be used. 
+
 Code Folding
 ------------
 

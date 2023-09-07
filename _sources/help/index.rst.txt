@@ -21,3 +21,4 @@ Help
    formatting.rst
    export.rst
    fonts.rst
+   inspector.rst
