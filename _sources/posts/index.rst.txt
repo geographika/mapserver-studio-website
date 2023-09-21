@@ -12,6 +12,7 @@ Below are links to MapServer related posts and articles.
    ../posts/releases.rst
    ../posts/mapserver-8.0.1.rst
    ../posts/raster_analysis.rst
+   ../posts/geoparquet.rst
 
 ..
    browser.rst

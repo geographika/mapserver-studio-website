@@ -33,7 +33,7 @@ window.addEventListener("load", () => {
     hashtag_name: "",
 
     // Maximum amount of toots to get. Default: 20
-    toots_limit: "20",
+    toots_limit: "7",
 
     // Hide unlisted toots. Default: don't hide
     hide_unlisted: false,
@@ -45,7 +45,7 @@ window.addEventListener("load", () => {
     hide_replies: false,
 
     // Hide preview card if toot contains a link, photo or video from a URL. Default: don't hide
-    hide_preview_link: false,
+    hide_preview_link: true,
 
     // Converts Markdown symbol ">" at the beginning of a paragraph into a blockquote HTML tag (default: don't apply)
     markdown_blockquote: false,

@@ -1,0 +1,456 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<meta property="og:title" content="Using GeoParquet in MapServer" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mapserverstudio.net/posts/geoparquet.html" />
+<meta property="og:site_name" content="MapServer Studio" />
+<meta property="og:description" content="There’s been a lot of buzz around GeoParquet, with posts such as GeoParquet 1.0.0 is Here, and It’s Changing the Geospatial Game and GeoParquet will be the most important tool in modern GIS in 2022..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="https://mapserverstudio.net/_images/social_previews/summary_posts_geoparquet_394d36cd.png" />
+<meta property="og:image:alt" content="There’s been a lot of buzz around GeoParquet, with posts such as GeoParquet 1.0.0 is Here, and It’s Changing the Geospatial Game and GeoParquet will be the m..." />
+<meta name="description" content="There’s been a lot of buzz around GeoParquet, with posts such as GeoParquet 1.0.0 is Here, and It’s Changing the Geospatial Game and GeoParquet will be the most important tool in modern GIS in 2022..." />
+<meta name="twitter:card" content="summary_large_image" />
+
+    <title>Using GeoParquet in MapServer &#8212; MapServer Studio</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/features.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mastodon-timeline.min.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/twitter.js"></script>
+    <script src="../_static/mastodon-timeline.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Raster Analysis Using MapServer" href="raster_analysis.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/" class="logo__image only-dark" alt="Logo image">
+  
+  
+    <p class="title logo__title">MapServer Studio</p>
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  MapServer Studio
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../help/index.html">
+  Help
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Posts
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../pricing.html">
+  Pricing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../about.html">
+  About
+ </a>
+</li>
+
+    
+    <li class="nav-item">
+        <a class="nav-link nav-external" href="https://mapserverstudio.eu.auth0.com/authorize?response_type=code&client_id=vKBoAqZQzwn9RhR8sDNxwbJExQZNtYzS&redirect_uri=https://app.mapserverstudio.net&scope=email&screen_hint=signup">Sign Up<i class="fas fa-external-link-alt"></i></a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link nav-external" href="https://app.mapserverstudio.net">Try MapServer Studio<i class="fas fa-external-link-alt"></i></a>
+    </li>
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Posts:
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="releases.html">
+   MapServer Studio Releases
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mapserver-8.0.1.html">
+   MapServer 8.0.1 Release
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_analysis.html">
+   Raster Analysis Using MapServer
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Using GeoParquet in MapServer
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      ﻿<!--
+    <a class="twitter-timeline"
+   href="https://twitter.com/mapserverstudio?ref_src=twsrc%5Etfw"
+   data-tweet-limit=3>
+    Tweets by @mapserverstudio
+</a>
+<a class="twitter-follow-button"
+   data-show-count="false"
+   href="https://twitter.com/mapserverstudio">
+    Follow @mapserverstudio
+</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    -->
+<!--
+Currently embedded timelines are broken :-(
+https://twittercommunity.com/t/again-list-widget-says-nothing-to-see-here-yet-if-logged-out/198782/156)
+-->
+
+<div class="mt-timeline">
+    <div id="mt-body" class="mt-body" role="feed">
+        <div class="loading-spinner"></div>
+    </div>
+</div>
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <section id="using-geoparquet-in-mapserver">
+<h1>Using GeoParquet in MapServer<a class="headerlink" href="#using-geoparquet-in-mapserver" title="Permalink to this heading">#</a></h1>
+<p>There’s been a lot of buzz around GeoParquet, with posts such as
+<a class="reference external" href="https://www.linkedin.com/pulse/geoparquet-100-here-its-changing-geospatial-game-belo-camptocamp">GeoParquet 1.0.0 is Here, and It’s Changing the Geospatial Game</a>
+and <a class="reference external" href="https://forrest.nyc/geoparquet-will-be-the-most-important-tool-in-modern-gis-in-2022/">GeoParquet will be the most important tool in modern GIS in 2022</a>.</p>
+<p>A summary of the format from the official site is:</p>
+<blockquote class="epigraph">
+<div><p>Apache Parquet is a powerful column-oriented data format, built from the ground up to as a modern alternative to CSV files.
+GeoParquet is an incubating Open Geospatial Consortium (OGC)
+standard that adds interoperable geospatial types (Point, Line, Polygon) to Parquet.</p>
+<p class="attribution">—<a class="reference external" href="https://geoparquet.org/">https://geoparquet.org/</a></p>
+</div></blockquote>
+<p>Can the GeoParquet format be used by MapServer? Of course! This post details how.</p>
+<nav class="contents local" id="page-contents">
+<p class="topic-title">Page Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#does-my-mapserver-support-geoparquet" id="id1">Does my MapServer Support GeoParquet?</a></p></li>
+<li><p><a class="reference internal" href="#displaying-geoparquet" id="id2">Displaying GeoParquet</a></p></li>
+<li><p><a class="reference internal" href="#serving-geoparquet" id="id3">Serving GeoParquet</a></p></li>
+</ul>
+</nav>
+<section id="does-my-mapserver-support-geoparquet">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Does my MapServer Support GeoParquet?</a><a class="headerlink" href="#does-my-mapserver-support-geoparquet" title="Permalink to this heading">#</a></h2>
+<p>Thanks to the use of GDAL in MapServer, GeoParquet is available both as a data source, and as an output option.
+The <a class="reference external" href="https://gdal.org/drivers/vector/parquet.html">GDAL GeoParquet</a> driver was added in version 3.5 of GDAL. To check the version
+of GDAL used by your MapServer installation you can run the following from the command-line:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>mapserv -v
+
+MapServer version 8.0.1 PROJ version 9.1 GDAL version 3.7 OUTPUT=PNG...
+INPUT=OGR INPUT=GDAL
+</pre></div>
+</div>
+<p>GDAL and PROJ version numbers were added to the <code class="docutils literal notranslate"><span class="pre">-v</span></code> output in MapServer 8.0. GDAL is no longer an optional requirement of MapServer,
+so OGR and GDAL inputs should always be available.</p>
+<p>GDAL can be compiled with many different options, and different include different drivers. To check that your version of GDAL includes
+GeoParquet support run the following.</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>ogr2ogr --formats
+
+..
+Parquet -vector- (rw+v): (Geo)Parquet
+Arrow -vector- (rw+v): (Geo)Arrow IPC File Format / Stream
+GTFS -vector- (rov): General Transit Feed Specification
+..
+</pre></div>
+</div>
+<p>If “Parquet” isn’t listed in the output you are out of luck and will need to look at updating or rebuilding
+your MapServer installation. Note the Camptocamp’s <a class="reference external" href="https://github.com/camptocamp/docker-mapserver/blob/master/Dockerfile">docker-mapfile</a>
+uses the GDAL base image <code class="docutils literal notranslate"><span class="pre">ghcr.io/osgeo/gdal:ubuntu-small-3.7.1</span></code> which doesn’t currently include GeoParquet support.</p>
+</section>
+<section id="displaying-geoparquet">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Displaying GeoParquet</a><a class="headerlink" href="#displaying-geoparquet" title="Permalink to this heading">#</a></h2>
+<p>Any format that can be read by GDAL format can also be read by MapServer thanks to <a class="reference external" href="https://www.mapserver.org/input/vector/ogr.html">OGR Support</a>.
+There is an <a class="reference external" href="https://github.com/opengeospatial/geoparquet/blob/main/examples/example.parquet">example.parquet</a> file in the
+<a class="reference external" href="https://github.com/opengeospatial/geoparquet">GeoParquet GitHub repository</a>. We can display it directly without needing to download any
+data with the following Mapfile:</p>
+<div class="highlight-mapfile notranslate"><div class="highlight"><pre><span></span><span class="k">MAP</span>
+    <span class="k">NAME</span> <span class="s">&quot;GeoParquetExample&quot;</span>
+    <span class="k">EXTENT</span> <span class="p">-</span><span class="mi">180</span> <span class="p">-</span><span class="mi">90</span> <span class="mi">180</span> <span class="mi">90</span>
+    <span class="k">IMAGECOLOR</span> <span class="s">&quot;#6DA9D2&quot;</span>
+    <span class="k">PROJECTION</span>
+        <span class="s">&quot;init=epsg:4326&quot;</span>
+    <span class="k">END</span>
+    <span class="k">LAYER</span>
+        <span class="k">TYPE</span> <span class="nb">POLYGON</span>
+        <span class="k">NAME</span> <span class="s">&quot;countries&quot;</span>
+        <span class="k">STATUS</span> <span class="nb">ON</span>
+        <span class="k">CONNECTIONTYPE</span> <span class="nb">OGR</span>
+        <span class="k">CONNECTION</span> <span class="s">&quot;/vsicurl/https://github.com/opengeospatial/geoparquet/raw/main/examples/example.parquet&quot;</span>
+        <span class="k">CLASS</span>
+            <span class="k">STYLE</span>
+                <span class="k">COLOR</span> <span class="s">&quot;#2A8000&quot;</span>
+            <span class="k">END</span>
+        <span class="k">END</span>
+    <span class="k">END</span>
+<span class="k">END</span>
+</pre></div>
+</div>
+<p>You can see a fully working example in MapServer Studio at <a class="reference external" href="https://app.mapserverstudio.net/#vSEEMuQ6">https://app.mapserverstudio.net/#vSEEMuQ6</a>.</p>
+<img alt="GeoParquet Output" class="align-center" src="../_images/geoparquet.png" />
+<p>If you don’t have GeoParquet support you’ll likely see the message below:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>msDrawMap(): Image handling error. Failed to draw layer named &#39;countries&#39;.
+msOGRFileOpen(): OGR error. Open failed for OGR connection in layer `countries&#39;.  File not found or unsupported format. Check server logs.
+</pre></div>
+</div>
+<p>The easiest way to check if you’ll be able to display the data is to use <cite>ogrinfo</cite>. If <cite>ogrinfo</cite> can read the file, then
+MapServer will also be able to.</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>ogrinfo <span class="s2">&quot;/vsicurl/https://github.com/opengeospatial/geoparquet/raw/main/examples/example.parquet&quot;</span>
+
+INFO: Open of `/vsicurl/https://github.com/opengeospatial/geoparquet/raw/main/examples/example.parquet&#39;
+      using driver `Parquet&#39; successful.
+1<span class="p">:</span> <span class="nl">example</span><span class="c1"> (Multi Polygon)</span>
+</pre></div>
+</div>
+</section>
+<section id="serving-geoparquet">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Serving GeoParquet</a><a class="headerlink" href="#serving-geoparquet" title="Permalink to this heading">#</a></h2>
+<p>Not only can MapServer render GeoParquet, it can also dynamically create GeoParquet output for downloading. MapServer
+can serve data in any GDAL/OGR format thanks to <a class="reference external" href="https://mapserver.org/output/ogr_output.html">OGR Output</a> support.</p>
+<p>GeoParquet datasets can be served out using the WFS protocol by adding the following to your Mapfile:</p>
+<div class="highlight-mapfile notranslate"><div class="highlight"><pre><span></span><span class="c"># add the GeoParquet as an output format</span>
+<span class="k">OUTPUTFORMAT</span>
+  <span class="k">NAME</span> <span class="s">&quot;GEOPARQUET&quot;</span>
+  <span class="k">DRIVER</span> <span class="s">&quot;OGR/Parquet&quot;</span>
+  <span class="k">FORMATOPTION</span> <span class="s">&quot;STORAGE=memory&quot;</span>
+  <span class="k">FORMATOPTION</span> <span class="s">&quot;FORM=simple&quot;</span>
+  <span class="k">FORMATOPTION</span> <span class="s">&quot;FILENAME=result.parquet&quot;</span>
+<span class="k">END</span>
+
+<span class="k">WEB</span>
+    <span class="k">METADATA</span>
+        <span class="c"># ensure the format is included as a WFS output option</span>
+        <span class="s">&quot;wfs_getfeature_formatlist&quot;</span> <span class="s">&quot;GEOPARQUET&quot;</span> <span class="c"># must match OUTPUTFORMAT NAME</span>
+    <span class="k">END</span>
+<span class="k">END</span>
+</pre></div>
+</div>
+<p>Again a fully working example is available in MapServer Studio at <a class="reference external" href="https://app.mapserverstudio.net/#7nvG15fQ">https://app.mapserverstudio.net/#7nvG15fQ</a>.</p>
+<p>To test you can get data successfully you can make a WFS request. MapServer Studio has the
+<a class="reference external" href="https://github.com/geographika/ows-inspector">Open Web Services Inspector</a> integrated into its <a class="reference internal" href="../help/inspector.html#ows-inspector-label"><span class="std std-ref">user interface</span></a>
+We can use this to create a WFS request for a Mapfile with GeoParquet support.</p>
+<img alt="GeoParquet Output" class="align-center" src="../_images/geoparquet-mss.png" />
+<p>The OWS Inspector doesn’t currently support displaying binary files
+so you’ll need to copy and paste the generated URL into a new browser tab to trigger a file download.</p>
+<p>The URL will look similar to below:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>https://api.mapserverstudio.net/mapserver/?map=/etc/mapserver/mapfiles/output/ce2919f6-95f4-455c-ba9a-6927953ada61.map<span class="p">&amp;</span>version=2.0.0<span class="p">&amp;</span>request=GetFeature<span class="p">&amp;</span>service=WFS<span class="p">&amp;</span>typeNames=Line<span class="p">&amp;</span>outputFormat=GEOPARQUET<span class="p">&amp;</span>exceptions=xml<span class="p">&amp;</span>count=10
+</pre></div>
+</div>
+<p>Once the GeoParquet file is downloaded you can test that the output is valid in a GIS application such as QGIS:</p>
+<img alt="GeoParquet Output in QGIS" class="align-center" src="../_images/geoparquet-qgis.png" />
+<p>To further customise GeoParquet output any of the layer creation options listed on the
+<a class="reference external" href="https://gdal.org/drivers/vector/parquet.html#layer-creation-options">GDAL GeoParquet Driver</a>
+page can be added to the <cite>OUTPUTFORMAT</cite> block using a <code class="docutils literal notranslate"><span class="pre">FORMATOPTION</span></code> with a <code class="docutils literal notranslate"><span class="pre">LCO:</span></code> prefix, for example:</p>
+<div class="highlight-mapfile notranslate"><div class="highlight"><pre><span></span><span class="k">OUTPUTFORMAT</span>
+  <span class="k">NAME</span> <span class="s">&quot;GEOPARQUET&quot;</span>
+    <span class="p">...</span>
+  <span class="k">FORMATOPTION</span> <span class="s">&quot;LCO:GEOMETRY_NAME=geom&quot;</span> <span class="c"># default is geometry</span>
+  <span class="k">FORMATOPTION</span> <span class="s">&quot;LCO:FID=ObjectId&quot;</span>
+  <span class="k">FORMATOPTION</span> <span class="s">&quot;LCO:CREATOR=MapServerStudio&quot;</span>
+<span class="k">END</span>
+</pre></div>
+</div>
+<p>We can check that these options have been used by requesting the data again and viewing the fields using <code class="docutils literal notranslate"><span class="pre">ogrinfo</span></code>:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>ogrinfo result.parquet result -so
+
+Layer name: result
+Geometry: Line String
+Feature Count: 10
+Extent: (48.386817, 46.542510) - (58.537021, 51.863015)
+...
+FID Column = ObjectId
+Geometry Column = geom
+</pre></div>
+</div>
+<p>When requesting data if the GeoParquet driver isn’t available you’ll receive an error similar to below. In this case check again that you
+have GeoParquet support available in your MapServer installation.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">HTML</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">HEAD</span><span class="p">&gt;&lt;</span><span class="nt">TITLE</span><span class="p">&gt;</span>MapServer Message<span class="p">&lt;/</span><span class="nt">TITLE</span><span class="p">&gt;&lt;/</span><span class="nt">HEAD</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">BODY</span> <span class="na">BGCOLOR</span><span class="o">=</span><span class="s">&quot;#FFFFFF&quot;</span><span class="p">&gt;</span>
+loadOutputFormat(): General error message. OUTPUTFORMAT (OGRFLATGEOBUF) clause references driver (OGR/Parquet), but this driver isn<span class="ni">&amp;#39;</span>t configured.
+msInitDefaultOGROutputFormat(): General error message. No OGR driver named `Parquet<span class="ni">&amp;#39;</span> available.
+<span class="p">&lt;/</span><span class="nt">BODY</span><span class="p">&gt;&lt;/</span><span class="nt">HTML</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>I hope you’ve found this post helpful, and if you or your organisation requires MapServer support or development
+please get in touch at <a class="reference external" href="mailto:support&#37;&#52;&#48;mapserverstudio&#46;net">support<span>&#64;</span>mapserverstudio<span>&#46;</span>net</a>.</p>
+</section>
+</section>
+
+
+              </article>
+              
+
+              
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="raster_analysis.html" title="previous page">
+      <i class="fas fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Raster Analysis Using MapServer</p>
+      </div>
+  </a>
+</div>
+              </footer>
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2023, Geographika Ltd..<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>
