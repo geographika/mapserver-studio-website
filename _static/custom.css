@@ -10,3 +10,24 @@
     margin: 4px 2px;
     cursor: pointer;
 }
+
+.mt-toot{
+    padding: 0px !important;
+}
+
+.mt-toot-header {
+    display: none !important;
+}
+
+.mt-body {
+    padding: 0px !important;
+}
+
+.bd-sidebar-primary {
+    overflow-y: unset !important;
+    width: 20% !important;
+}
+
+.sidebar-secondary-item {
+    padding-left: 0px !important;
+}

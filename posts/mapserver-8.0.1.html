@@ -1,10 +1,12 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta property="og:title" content="MapServer 8.0.1 Release" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://mapserverstudio.net/posts/mapserver-8.0.1.html" />
@@ -18,231 +20,387 @@
 <meta name="twitter:card" content="summary_large_image" />
 
     <title>MapServer 8.0.1 Release &#8212; MapServer Studio</title>
-<script>
-  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
-</script>
-
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/features.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mastodon-timeline.min.css" />
-
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/features.css?v=6a0c0b0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a1e7147a" />
+    <link rel="stylesheet" type="text/css" href="../_static/mastodon-timeline.css?v=b19037c1" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/twitter.js"></script>
-    <script src="../_static/mastodon-timeline.js"></script>
+    <script src="../_static/documentation_options.js?v=d6b6a36a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/mapserver-8.0.1';</script>
+    <script src="../_static/mastodon-timeline.js?v=851840f4"></script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Raster Analysis Using MapServer" href="raster_analysis.html" />
     <link rel="prev" title="MapServer Studio Releases" href="releases.html" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="docsearch:language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
-    <div class="bd-header-announcement container-fluid" id="banner">
-      
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    </div>
-
-    
-    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
-
-  <div id="navbar-start">
-    
-    
   
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
 
 <a class="navbar-brand logo" href="../index.html">
   
   
   
   
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image">
-    <img src="../_static/" class="logo__image only-dark" alt="Logo image">
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
     <p class="title logo__title">MapServer Studio</p>
   
-</a>
+</a></div>
     
   </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        MapServer Studio
+                      </a>
+                    </li>
+                
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="fas fa-bars"></span>
-  </button>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../help/index.html">
+                        Help
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Posts
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../pricing.html">
+                        Pricing
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                <li class="nav-item">
+                  <a class="nav-link nav-external" href="https://mapserverstudio.eu.auth0.com/authorize?response_type=code&client_id=vKBoAqZQzwn9RhR8sDNxwbJExQZNtYzS&redirect_uri=https://app.mapserverstudio.net&scope=email&screen_hint=signup">
+                    Sign Up
+                  </a>
+                </li>
+                
+
+                <li class="nav-item">
+                  <a class="nav-link nav-external" href="https://app.mapserverstudio.net">
+                    Try MapServer Studio
+                  </a>
+                </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
 
   
-  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
-    <div id="navbar-center" class="mr-auto">
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-      <div class="navbar-center-item">
-        <ul id="navbar-main-elements" class="navbar-nav">
-    <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../index.html">
-  MapServer Studio
- </a>
-</li>
+      <div class="bd-sidebar-primary bd-sidebar">
+        
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../help/index.html">
-  Help
- </a>
-</li>
-
-<li class="toctree-l1 current active nav-item">
- <a class="reference internal nav-link" href="index.html">
-  Posts
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../pricing.html">
-  Pricing
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../about.html">
-  About
- </a>
-</li>
-
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <li class="nav-item">
-        <a class="nav-link nav-external" href="https://mapserverstudio.eu.auth0.com/authorize?response_type=code&client_id=vKBoAqZQzwn9RhR8sDNxwbJExQZNtYzS&redirect_uri=https://app.mapserverstudio.net&scope=email&screen_hint=signup">Sign Up<i class="fas fa-external-link-alt"></i></a>
-    </li>
     
-    <li class="nav-item">
-        <a class="nav-link nav-external" href="https://app.mapserverstudio.net">Try MapServer Studio<i class="fas fa-external-link-alt"></i></a>
-    </li>
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
     
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        MapServer Studio
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../help/index.html">
+                        Help
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Posts
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../pricing.html">
+                        Pricing
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../about.html">
+                        About
+                      </a>
+                    </li>
+                
+
+                <li class="nav-item">
+                  <a class="nav-link nav-external" href="https://mapserverstudio.eu.auth0.com/authorize?response_type=code&client_id=vKBoAqZQzwn9RhR8sDNxwbJExQZNtYzS&redirect_uri=https://app.mapserverstudio.net&scope=email&screen_hint=signup">
+                    Sign Up
+                  </a>
+                </li>
+                
+
+                <li class="nav-item">
+                  <a class="nav-link nav-external" href="https://app.mapserverstudio.net">
+                    Try MapServer Studio
+                  </a>
+                </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Posts:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="releases.html">MapServer Studio Releases</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">MapServer 8.0.1 Release</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raster_analysis.html">Raster Analysis Using MapServer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geoparquet.html">Using GeoParquet in MapServer</a></li>
 </ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
       </div>
       
-    </div>
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
 
-    <div id="navbar-end">
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Posts</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">MapServer...</li>
+  </ul>
+</nav>
+</div>
       
     </div>
-  </div>
-</div>
-    </nav>
-    
-
-    <div class="bd-container container-xl">
-      <div class="bd-container__inner row">
-          
-
-<!-- Only show if we have sidebars configured, else just a small margin  -->
-<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
-  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <div class="bd-toc-item active">
-    <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Posts:
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="releases.html">
-   MapServer Studio Releases
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   MapServer 8.0.1 Release
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="raster_analysis.html">
-   Raster Analysis Using MapServer
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="geoparquet.html">
-   Using GeoParquet in MapServer
-  </a>
- </li>
-</ul>
-
-  </div>
-</nav>
-  </div>
-  <div class="sidebar-end-items">
-  </div>
-</div>
-
-
-          
-
-
-<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
   
-    
-    <div class="toc-item">
-      ﻿<!--
-    <a class="twitter-timeline"
-   href="https://twitter.com/mapserverstudio?ref_src=twsrc%5Etfw"
-   data-tweet-limit=3>
-    Tweets by @mapserverstudio
-</a>
-<a class="twitter-follow-button"
-   data-show-count="false"
-   href="https://twitter.com/mapserverstudio">
-    Follow @mapserverstudio
-</a>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    -->
-<!--
-Currently embedded timelines are broken :-(
-https://twittercommunity.com/t/again-list-widget-says-nothing-to-see-here-yet-if-logged-out/198782/156)
--->
-
-<div class="mt-timeline">
-    <div id="mt-body" class="mt-body" role="feed">
-        <div class="loading-spinner"></div>
-    </div>
-</div>
-    </div>
-    
   
 </div>
-
-
-          
-          
-          <div class="bd-content col-12 col-md-9 col-xl-7">
+</div>
               
-              <article class="bd-article" role="main">
+              
+              
                 
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section id="mapserver-8-0-1-release">
-<h1><a class="toc-backref" href="#id3" role="doc-backlink">MapServer 8.0.1 Release</a><a class="headerlink" href="#mapserver-8-0-1-release" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id3" role="doc-backlink">MapServer 8.0.1 Release</a><a class="headerlink" href="#mapserver-8-0-1-release" title="Link to this heading">#</a></h1>
 <img alt="MapServer Logo" class="align-right" src="../_images/mapserver-logo.jpg" />
 <p>MapServer 8.0.1 was released on April 21st 2023. 8.0.1 is a maintenance release which means it is fully compatible with
 MapServer 8.0.0 and focuses on fixes and improvements, without any breaking changes.
@@ -296,22 +454,22 @@ within the same release series, so from 7.6.4 to 7.6.5.
 </pre></div>
 </div>
 <section id="enhancements">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Enhancements</a><a class="headerlink" href="#enhancements" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Enhancements</a><a class="headerlink" href="#enhancements" title="Link to this heading">#</a></h2>
 <section id="cgi-parameters">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">CGI Parameters</a><a class="headerlink" href="#cgi-parameters" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">CGI Parameters</a><a class="headerlink" href="#cgi-parameters" title="Link to this heading">#</a></h3>
 <p>Since the 8.0 release there have been a few posts on the user mailing lists about not being able to dynamically
 change various Mapfile parameters in MapServer 8.0. The 8.0.1 release aims to resolve the most common of these,
 and <a class="reference external" href="https://github.com/MapServer/MapServer/pull/6804">pull request #6804</a> allows
 <a class="reference external" href="https://mapserver.org/cgi/runsub.html#runsub">runtime substitution</a> to be used for the web <code class="docutils literal notranslate"><span class="pre">TEMPLATE</span></code> property.</p>
 </section>
 <section id="features-without-a-geometry">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Features without a Geometry</a><a class="headerlink" href="#features-without-a-geometry" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Features without a Geometry</a><a class="headerlink" href="#features-without-a-geometry" title="Link to this heading">#</a></h3>
 <p>Pull request <a class="reference external" href="https://github.com/MapServer/MapServer/pull/6731">#6731</a> allows features without a geometry
 (NULL shapes) to be returned in WFS GetFeature requests. This is useful if you have a list of features with attributes and
 want to return records with null geometries in the same list.</p>
 </section>
 <section id="the-proj-environment-variable">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">The PROJ Environment Variable</a><a class="headerlink" href="#the-proj-environment-variable" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">The PROJ Environment Variable</a><a class="headerlink" href="#the-proj-environment-variable" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://github.com/MapServer/MapServer/pull/6863">Pull request #6863</a> allows multiple paths to be set for
 the <a class="reference external" href="https://mapserver.org/sq/optimization/environment_variables.html#list-of-all-possible-mapserver-environment-variables">PROJ_LIB environment variable</a>.</p>
 <p>For example the following can now be set in a <code class="docutils literal notranslate"><span class="pre">CONFIG</span></code> file:</p>
@@ -336,10 +494,10 @@ than resource files.</p>
 </section>
 </section>
 <section id="security">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Security</a><a class="headerlink" href="#security" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Security</a><a class="headerlink" href="#security" title="Link to this heading">#</a></h2>
 <p>There are a couple of security improvements included in the MapServer 8.0.1.</p>
 <section id="restricted-version-information">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">Restricted Version Information</a><a class="headerlink" href="#restricted-version-information" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Restricted Version Information</a><a class="headerlink" href="#restricted-version-information" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://github.com/MapServer/MapServer/pull/6808">Pull request #6808</a> removes the MapServer
 version and supported types from web responses. Previously the following
 information would have been visible to all users:</p>
@@ -360,14 +518,14 @@ This adds PROJ and GDAL versions to MapServer version output, so the following i
 These details can now be more easily added to any issues created on GitHub to help resolving bugs that relate to these dependencies.</p>
 </section>
 <section id="password-redaction">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">Password Redaction</a><a class="headerlink" href="#password-redaction" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Password Redaction</a><a class="headerlink" href="#password-redaction" title="Link to this heading">#</a></h3>
 <p>Pull request <a class="reference external" href="https://github.com/MapServer/MapServer/pull/6616">#6616</a> redacts passwords used for database connections
 from error and log messages. Redactions were already in place, but missed some connection string formats. This code now covers
 all types of database connection strings.</p>
 </section>
 </section>
 <section id="memory-leak-fixes">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">Memory Leak Fixes</a><a class="headerlink" href="#memory-leak-fixes" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Memory Leak Fixes</a><a class="headerlink" href="#memory-leak-fixes" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://github.com/google/oss-fuzz/">OSS-Fuzz</a> is an open source project launched by Google in 2016 that aims to improve the security and stability of
 software by providing continuous fuzz testing to open source software projects. Fuzz testing is a technique where software
 is bombarded with a large number of inputs to identify vulnerabilities and crashes.</p>
@@ -375,7 +533,7 @@ is bombarded with a large number of inputs to identify vulnerabilities and crash
 There are over 50 fixes thanks to <a class="reference external" href="https://github.com/rouault">Even Rouault</a> included in the 8.0.1 release.</p>
 </section>
 <section id="mapserver-infrastructure-updates">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">MapServer Infrastructure Updates</a><a class="headerlink" href="#mapserver-infrastructure-updates" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">MapServer Infrastructure Updates</a><a class="headerlink" href="#mapserver-infrastructure-updates" title="Link to this heading">#</a></h2>
 <p>These are a collection of non-code related fixes, improvements, and enhancements to all the infrastructure that keeps the MapServer project running.</p>
 <ul class="simple">
 <li><p>Updates to the <a class="reference external" href="https://demo.mapserver.org/">MapServer Demo server</a></p></li>
@@ -386,7 +544,7 @@ changes to the MapServer code-base don’t introduce bugs</p></li>
 <p>Thanks to <a class="reference external" href="https://github.com/jmckenna">Jeff McKenna</a> for creating the 8.0.1 release and release notes.</p>
 </section>
 <section id="ogc-feature-api-fixes">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">OGC Feature API fixes</a><a class="headerlink" href="#ogc-feature-api-fixes" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">OGC Feature API fixes</a><a class="headerlink" href="#ogc-feature-api-fixes" title="Link to this heading">#</a></h2>
 <p>The big new feature of MapServer 8 was the <a class="reference external" href="https://mapserver.org/development/rfc/ms-rfc-134.html">OGC Features API Support</a>.
 Since the 8.0 release a number of minor issues have been fixed, these form part of the 8.0.1 release:</p>
 <ul class="simple">
@@ -397,7 +555,7 @@ Since the 8.0 release a number of minor issues have been fixed, these form part 
 </ul>
 </section>
 <section id="mapscript">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">MapScript</a><a class="headerlink" href="#mapscript" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">MapScript</a><a class="headerlink" href="#mapscript" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://github.com/MapServer/MapServer/pull/6646">Pull request #6646</a> allows a CONFIG files
 to be used when loading a Mapfile from a string, as in the Python MapScript example below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config_file</span> <span class="o">=</span> <span class="s2">&quot;C:/MapServer/apps/mapserer.conf&quot;</span>
@@ -418,55 +576,99 @@ in MapServer Studio by setting the “MapServer Engine” in the “Settings” 
 </section>
 
 
-              </article>
+                </article>
               
-
               
-              <footer class="bd-footer-article">
+              
+              
+              
+                <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="releases.html" title="previous page">
-      <i class="fas fa-angle-left"></i>
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="releases.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-          <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">MapServer Studio Releases</p>
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MapServer Studio Releases</p>
       </div>
-  </a>
-  <a class='right-next' id="next-link" href="raster_analysis.html" title="next page">
-  <div class="prev-next-info">
-      <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Raster Analysis Using MapServer</p>
-  </div>
-  <i class="fas fa-angle-right"></i>
-  </a>
+    </a>
+    <a class="right-next"
+       href="raster_analysis.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Raster Analysis Using MapServer</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-              </footer>
+                </footer>
               
-          </div>
-          
-      </div>
-    </div>
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-  
+  <div class="sidebar-secondary-item">﻿<div class="mt-timeline">
+    <div id="mt-body" class="mt-body" role="feed">
+        <div class="loading-spinner"></div>
+    </div>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
-<footer class="bd-footer"><div class="bd-footer__inner container">
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
   
-  <div class="footer-item">
-    <p class="copyright">
-    &copy; Copyright 2023, Geographika Ltd..<br>
-</p>
-  </div>
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023, Geographika Ltd..
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
   
-  <div class="footer-item">
-    <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
-</p>
-  </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.1.
+</p></div>
+      
+    </div>
   
 </div>
-</footer>
+
+  </footer>
   </body>
 </html>

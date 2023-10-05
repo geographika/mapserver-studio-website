@@ -18,25 +18,35 @@ Seth
 
 
 
+images will be watermarked.  
 
+Hosting and data transfer costs, 
 
-
-
-images will be watermarked. 
-
-Hosting and data transfer costs,
 
 The aims of this project are as follows:
 
-- 
 
 
 No vendor lockin - any maps created in MapServer Studio can be saved as a Mapfile and served using a locally installed
-version of MapServer. 
+version of MapServer.  
 
 
 Natural Earth dataset.
-OGC Features API.
+OGC Features API
+
+
+ 
+Hi all,
+
+https://mappyfile.readthedocs.io/en/latest/ - version 1.0
+
+https://mapserverstudio.net/help/inspector.html
+
+https://ows.mapserverstudio.net/
+
+Using GeoParquet in MapServer - https://mapserverstudio.net/posts/geoparquet.html
+
+
 
 
 
@@ -44,3 +54,7 @@ OGC Features API.
 
 
 As appreciation for your support there is a link to a 3-month free trial for the "Professional"
+
+
+
+

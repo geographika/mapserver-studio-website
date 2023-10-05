@@ -4,6 +4,8 @@ About
 MapServer Studio is created by `Geographika Ltd. <https://geographika.net/>`_
 a UK based geospatial consultancy. 
 
+If you require MapServer support or development please get in touch at contact@mapserverstudio.net.
+You can find Geographika Ltd. listed on the `MapServer Service Providers page <https://mapserver.org/community/service_providers.html>`_.
 
 Privacy
 -------
