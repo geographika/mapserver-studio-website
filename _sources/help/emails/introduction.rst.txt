@@ -38,15 +38,22 @@ OGC Features API
  
 Hi all,
 
-https://mappyfile.readthedocs.io/en/latest/ - version 1.0
+Thanks for subscribing to updates or creating an account with MapServerStudio!
 
-https://mapserverstudio.net/help/inspector.html
+If you are having any issues using MapServerStudio or need some help please let me know through support@mapserverstudio.net
 
-https://ows.mapserverstudio.net/
+I send out infrequent emails about new developments in MapServerStudio and MapServer related projects. I hope you find these useful, but please unsubscribe if not. Some recent highlights are listed below.
 
-Using GeoParquet in MapServer - https://mapserverstudio.net/posts/geoparquet.html
+    If you work with WMS and WFS services give the Open Web Services Inspector a try. This is a completely open source project that allows you to test services from the browser. It is also fully integrated into MapServerStudio, so you can test the effects Mapfile changes have on service outputs.
+    mappyfile is an open source Python project that allows you to easily work with MapServer Mapfiles, and is used by MapServerStudio. Last month saw its v1.0 release after 6 years of development.
+    Several new templates have been added to MapServerStudio including an example of displaying Geoparquet data. A blog post details how you can read and serve Geoparquet datasets from your own MapServer deployments.
+    An example of a halftone map is now available as a template, showing bathymetry data.
 
+One of the main aims of developing MapServerStudio was to allow me to work more on MapServer and other related open source projects. If your organisation requires MapServer support, bug fixes, or development then please get in touch.
 
+Thanks for your support,
+
+Seth
 
 
 
